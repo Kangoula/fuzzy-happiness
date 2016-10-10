@@ -1,0 +1,71 @@
+entity Emprunt {
+  dateEmprunt LocalDate,
+    dateRetour LocalDate
+}
+
+entity Usager {
+    nom String,
+    prenom String,
+    adresse String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Livre {
+  dateEdition LocalDate,
+  resume String,
+    nbResa Integer,
+    dateAjout LocalDate
+}
+
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Exemplaire {
+  edition String,
+    etat String
+}
+
+/**
+ * The Employee entity.
+ */
+entity Auteur {
+  nom String,
+  prenom String
+}
+
+entity Magazine {
+  numero Integer,
+  parution LocalDate,
+  periodicite Integer,
+    nbResa Integer,
+    dateAjout LocalDate
+}
+
+entity Reservation {
+  date LocalDate,
+  dateExpiration LocalDate
+}
+
+relationship OneToMany {
+Auteur{auteurMagazine} to Magazine,
+Auteur{auteurLivre} to Livre
+}
+
+relationship OneToMany {
+ Magazine{magazineExemplaire} to Exemplaire,
+ Livre{livreExemplaire} to Exemplaire
+}
+
+relationship OneToMany {
+Reservation{reservationExemplaire} to Exemplaire,
+Usager{usagerReservation} to Reservation
+}
+
+relationship OneToMany {
+  Usager{usagerEmprunt} to Emprunt,
+    Livre{livreEmprunt} to Emprunt,
+    Magazine{magazineEmprunt} to Emprunt
+}
