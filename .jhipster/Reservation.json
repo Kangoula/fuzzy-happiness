@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "usager",
+            "otherEntityName": "usager",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reservationExemplaire",
+            "otherEntityName": "exemplaire",
+            "otherEntityRelationshipName": "reservation"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateExpiration",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161010150036",
+    "entityTableName": "reservation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

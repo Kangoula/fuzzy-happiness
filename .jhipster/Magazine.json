@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "auteur",
+            "otherEntityName": "auteur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "magazineExemplaire",
+            "otherEntityName": "exemplaire",
+            "otherEntityRelationshipName": "magazine"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "magazineEmprunt",
+            "otherEntityName": "emprunt",
+            "otherEntityRelationshipName": "magazine"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "parution",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "periodicite",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nbResa",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dateAjout",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161010150035",
+    "entityTableName": "magazine",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

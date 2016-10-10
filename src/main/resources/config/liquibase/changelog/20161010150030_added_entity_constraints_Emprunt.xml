@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Emprunt.
+    -->
+    <changeSet id="20161010150030-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="usager_id"
+                                 baseTableName="emprunt"
+                                 constraintName="fk_emprunt_usager_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usager"/>
+
+        <addForeignKeyConstraint baseColumnNames="livre_id"
+                                 baseTableName="emprunt"
+                                 constraintName="fk_emprunt_livre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="livre"/>
+
+        <addForeignKeyConstraint baseColumnNames="magazine_id"
+                                 baseTableName="emprunt"
+                                 constraintName="fk_emprunt_magazine_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="magazine"/>
+
+    </changeSet>
+</databaseChangeLog>

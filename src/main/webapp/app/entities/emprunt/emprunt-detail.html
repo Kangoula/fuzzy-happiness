@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Emprunt</span> {{vm.emprunt.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Date Emprunt</span></dt>
+        <dd>
+            <span>{{vm.emprunt.dateEmprunt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Date Retour</span></dt>
+        <dd>
+            <span>{{vm.emprunt.dateRetour | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Usager</span></dt>
+        <dd>
+            <a ui-sref="usager-detail({id:vm.emprunt.usager.id})">{{vm.emprunt.usager.id}}</a>
+        </dd>
+        <dt><span>Livre</span></dt>
+        <dd>
+            <a ui-sref="livre-detail({id:vm.emprunt.livre.id})">{{vm.emprunt.livre.id}}</a>
+        </dd>
+        <dt><span>Magazine</span></dt>
+        <dd>
+            <a ui-sref="magazine-detail({id:vm.emprunt.magazine.id})">{{vm.emprunt.magazine.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="emprunt-detail.edit({id:vm.emprunt.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

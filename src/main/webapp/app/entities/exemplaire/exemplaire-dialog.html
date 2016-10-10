@@ -1,0 +1,56 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myExemplaireLabel">Create or edit a Exemplaire</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.exemplaire.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.exemplaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_edition">Edition</label>
+            <input type="text" class="form-control" name="edition" id="field_edition"
+                    ng-model="vm.exemplaire.edition"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_etat">Etat</label>
+            <input type="text" class="form-control" name="etat" id="field_etat"
+                    ng-model="vm.exemplaire.etat"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_livre">Livre</label>
+            <select class="form-control" id="field_livre" name="livre" ng-model="vm.exemplaire.livre" ng-options="livre as livre.id for livre in vm.livres track by livre.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_magazine">Magazine</label>
+            <select class="form-control" id="field_magazine" name="magazine" ng-model="vm.exemplaire.magazine" ng-options="magazine as magazine.id for magazine in vm.magazines track by magazine.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_reservation">Reservation</label>
+            <select class="form-control" id="field_reservation" name="reservation" ng-model="vm.exemplaire.reservation" ng-options="reservation as reservation.id for reservation in vm.reservations track by reservation.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

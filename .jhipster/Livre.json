@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "livreExemplaire",
+            "otherEntityName": "exemplaire",
+            "otherEntityRelationshipName": "livre"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "livreEmprunt",
+            "otherEntityName": "emprunt",
+            "otherEntityRelationshipName": "livre"
+        },
+        {
+            "relationshipName": "auteur",
+            "otherEntityName": "auteur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateEdition",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "resume",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nbResa",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dateAjout",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161010150032",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "livre",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "usager",
+            "otherEntityName": "usager",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "livre",
+            "otherEntityName": "livre",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "magazine",
+            "otherEntityName": "magazine",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateEmprunt",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateRetour",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161010150030",
+    "entityTableName": "emprunt",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

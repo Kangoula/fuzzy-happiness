@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "livre",
+            "otherEntityName": "livre",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "magazine",
+            "otherEntityName": "magazine",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "edition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161010150033",
+    "javadoc": "Task entity.@author The JHipster team.",
+    "entityTableName": "exemplaire",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

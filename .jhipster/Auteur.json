@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "auteurMagazine",
+            "otherEntityName": "magazine",
+            "otherEntityRelationshipName": "auteur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "auteurLivre",
+            "otherEntityName": "livre",
+            "otherEntityRelationshipName": "auteur"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161010150034",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "auteur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
