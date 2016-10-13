@@ -11,7 +11,7 @@
         <div class="form-group" ng-show="vm.livre.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.livre.id" readonly />
+                    ng-model="vm.livre.id" readonly disabled />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_dateEdition">Date Edition</label>
@@ -29,12 +29,12 @@
                     ng-model="vm.livre.resume"
                      />
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="control-label" for="field_nbResa">Nb Resa</label>
             <input type="number" class="form-control" name="nbResa" id="field_nbResa"
                     ng-model="vm.livre.nbResa"
                      />
-        </div>
+        </div>-->
         <div class="form-group">
             <label class="control-label" for="field_dateAjout">Date Ajout</label>
                 <div class="input-group">
@@ -48,7 +48,7 @@
 
         <div class="form-group">
             <label for="field_auteur">Auteur</label>
-            <select class="form-control" id="field_auteur" name="auteur" ng-model="vm.livre.auteur" ng-options="auteur as auteur.id for auteur in vm.auteurs track by auteur.id">
+            <select class="form-control" id="field_auteur" name="auteur" ng-model="vm.livre.auteur" ng-options="auteur as (auteur.prenom + ' ' + auteur.nom) for auteur in vm.auteurs track by auteur.id">
                 <option value=""></option>
             </select>
         </div>
