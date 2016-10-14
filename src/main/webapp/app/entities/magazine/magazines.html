@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="magazine.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Magazine
+                        Nouveau Magazine
                     </span>
                 </button>
             </div>
@@ -21,8 +21,8 @@
                     <th><span>ID</span></th>
                     <th><span>Numero</span></th>
                     <th><span>Parution</span></th>
-                    <th><span>Periodicite</span></th>
-                    <th><span>Nb Resa</span></th>
+                    <th><span>Periodicité</span></th>
+                    <th><span>Nb Reservations</span></th>
                     <th><span>Date Ajout</span></th>
                     <th><span>Auteur</span></th>
                     <th></th>
@@ -32,12 +32,12 @@
                 <tr ng-repeat="magazine in vm.magazines track by magazine.id">
                     <td><a ui-sref="magazine-detail({id:magazine.id})">{{magazine.id}}</a></td>
                     <td>{{magazine.numero}}</td>
-                        <td>{{magazine.parution | date:'mediumDate'}}</td>
+                        <td>{{magazine.parution | date:'d, MMM y'}}</td>
                     <td>{{magazine.periodicite}}</td>
                     <td>{{magazine.nbResa}}</td>
-                        <td>{{magazine.dateAjout | date:'mediumDate'}}</td>
+                        <td>{{magazine.dateAjout | date:'d, MMM y'}}</td>
                     <td>
-                        <a ui-sref="auteur-detail({id:magazine.auteur.id})">{{magazine.auteur.id}}</a>
+                        <a ui-sref="auteur-detail({id:magazine.auteur.id})">{{magazine.auteur.prenom}} {{magazine.auteur.nom}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
