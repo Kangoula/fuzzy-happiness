@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="emprunt.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Emprunt
+                        Nouvel Emprunt
                     </span>
                 </button>
             </div>
@@ -30,13 +30,13 @@
             <tbody>
                 <tr ng-repeat="emprunt in vm.emprunts track by emprunt.id">
                     <td><a ui-sref="emprunt-detail({id:emprunt.id})">{{emprunt.id}}</a></td>
-                        <td>{{emprunt.dateEmprunt | date:'mediumDate'}}</td>
-                        <td>{{emprunt.dateRetour | date:'mediumDate'}}</td>
+                        <td>{{emprunt.dateEmprunt | date:'d MMM, y'}}</td>
+                        <td>{{emprunt.dateRetour | date:'d MMM, y'}}</td>
                     <td>
-                        <a ui-sref="usager-detail({id:emprunt.usager.id})">{{emprunt.usager.id}}</a>
+                        <a ui-sref="usager-detail({id:emprunt.usager.id})">{{emprunt.usager.prenom}} {{emprunt.usager.nom}}</a>
                     </td>
                     <td>
-                        <a ui-sref="livre-detail({id:emprunt.livre.id})">{{emprunt.livre.id}}</a>
+                        <a ui-sref="livre-detail({id:emprunt.livre.id})">{{emprunt.livre.titre}} - {{emprunt.livre.auteur.prenom}} {{emprunt.livre.auteur.nom}}</a>
                     </td>
                     <td>
                         <a ui-sref="magazine-detail({id:emprunt.magazine.id})">{{emprunt.magazine.id}}</a>
