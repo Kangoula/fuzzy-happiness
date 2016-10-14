@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="exemplaire.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Exemplaire
+                        Nouvel Exemplaire
                     </span>
                 </button>
             </div>
@@ -33,10 +33,10 @@
                     <td>{{exemplaire.edition}}</td>
                     <td>{{exemplaire.etat}}</td>
                     <td>
-                        <a ui-sref="livre-detail({id:exemplaire.livre.id})">{{exemplaire.livre.id}}</a>
+                        <a ui-sref="livre-detail({id:exemplaire.livre.id})">{{exemplaire.livre.titre}} - {{exemplaire.livre.auteur.prenom}} {{exemplaire.livre.auteur.nom}}</a>
                     </td>
                     <td>
-                        <a ui-sref="magazine-detail({id:exemplaire.magazine.id})">{{exemplaire.magazine.id}}</a>
+                        <a ui-sref="magazine-detail({id:exemplaire.magazine.id})">{{exemplaire.magazine.titre}} n°{{exempalire.magazine.numero}}</a>
                     </td>
                     <td>
                         <a ui-sref="reservation-detail({id:exemplaire.reservation.id})">{{exemplaire.reservation.id}}</a>
