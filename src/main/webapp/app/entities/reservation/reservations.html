@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="reservation.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Reservation
+                        Nouvelle Reservation
                     </span>
                 </button>
             </div>
@@ -28,10 +28,10 @@
             <tbody>
                 <tr ng-repeat="reservation in vm.reservations track by reservation.id">
                     <td><a ui-sref="reservation-detail({id:reservation.id})">{{reservation.id}}</a></td>
-                        <td>{{reservation.date | date:'mediumDate'}}</td>
-                        <td>{{reservation.dateExpiration | date:'mediumDate'}}</td>
+                        <td>{{reservation.date | date:'d, MMM y'}}</td>
+                        <td>{{reservation.dateExpiration | date:'d, MMM y'}}</td>
                     <td>
-                        <a ui-sref="usager-detail({id:reservation.usager.id})">{{reservation.usager.id}}</a>
+                        <a ui-sref="usager-detail({id:reservation.usager.id})">{{reservation.usager.prenom}} {{reservation.usager.nom}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
