@@ -36,19 +36,19 @@
 
         <div class="form-group">
             <label for="field_usager">Usager</label>
-            <select class="form-control" id="field_usager" name="usager" ng-model="vm.emprunt.usager" ng-options="usager as usager.id for usager in vm.usagers track by usager.id">
+            <select class="form-control" id="field_usager" name="usager" ng-model="vm.emprunt.usager" ng-options="usager as (usager.prenom + ' ' + usager.nom) for usager in vm.usagers track by usager.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_livre">Livre</label>
-            <select class="form-control" id="field_livre" name="livre" ng-model="vm.emprunt.livre" ng-options="livre as livre.id for livre in vm.livres track by livre.id">
+            <select class="form-control" id="field_livre" name="livre" ng-model="vm.emprunt.livre" ng-options="livre as (livre.titre + ' - ' + livre.auteur.prenom + ' ' + livre.auteur.nom) for livre in vm.livres track by livre.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_magazine">Magazine</label>
-            <select class="form-control" id="field_magazine" name="magazine" ng-model="vm.emprunt.magazine" ng-options="magazine as magazine.id for magazine in vm.magazines track by magazine.id">
+            <select class="form-control" id="field_magazine" name="magazine" ng-model="vm.emprunt.magazine" ng-options="magazine as (magazine.titre + ' n°' + magazine.numero) for magazine in vm.magazines track by magazine.id">
                 <option value=""></option>
             </select>
         </div>
