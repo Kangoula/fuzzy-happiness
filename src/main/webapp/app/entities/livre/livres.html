@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="livre.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Livre
+                        Nouveau Livre
                     </span>
                 </button>
             </div>
@@ -30,10 +30,10 @@
             <tbody>
                 <tr ng-repeat="livre in vm.livres track by livre.id">
                     <td><a ui-sref="livre-detail({id:livre.id})">{{livre.id}}</a></td>
-                        <td>{{livre.dateEdition | date:'mediumDate'}}</td>
+                        <td>{{livre.dateEdition | date:'d MMM, y'}}</td>
                     <td>{{livre.resume}}</td>
                     <td>{{livre.nbResa}}</td>
-                        <td>{{livre.dateAjout | date:'mediumDate'}}</td>
+                        <td>{{livre.dateAjout | date:'d MMM, y'}}</td>
                     <td>
                         <a ui-sref="auteur-detail({id:livre.auteur.id})">{{livre.auteur.prenom}} {{livre.auteur.nom}}</a>
                     </td>
