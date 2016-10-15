@@ -1,6 +1,6 @@
 entity Emprunt {
   dateEmprunt LocalDate,
-    dateRetour LocalDate
+  dateRetour LocalDate
 }
 
 entity Usager {
@@ -9,28 +9,18 @@ entity Usager {
     adresse String
 }
 
-// an ignored comment
-/** not an ignored comment */
 entity Livre {
   dateEdition LocalDate,
   resume String,
-    nbResa Integer,
-    dateAjout LocalDate
+  nbResa Integer,
+  dateAjout LocalDate
 }
 
-
-/**
- * Task entity.
- * @author The JHipster team.
- */
 entity Exemplaire {
   edition String,
     etat String
 }
 
-/**
- * The Employee entity.
- */
 entity Auteur {
   nom String,
   prenom String
@@ -40,8 +30,8 @@ entity Magazine {
   numero Integer,
   parution LocalDate,
   periodicite Integer,
-    nbResa Integer,
-    dateAjout LocalDate
+  nbResa Integer,
+  dateAjout LocalDate
 }
 
 entity Reservation {
@@ -59,9 +49,9 @@ relationship OneToMany {
  Livre{livreExemplaire} to Exemplaire
 }
 
-relationship OneToMany {
-Reservation{reservationExemplaire} to Exemplaire,
-Usager{usagerReservation} to Reservation
+relationship ManyToOne {
+	Reservation{usagerReservation} to Usager,
+    Reservation{exemplaireReservation} to Exemplaire
 }
 
 relationship OneToMany {
