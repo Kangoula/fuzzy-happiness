@@ -1,7 +1,6 @@
 package fr.miage.bibaldenis.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,12 +10,8 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * not an ignored comment                                                      
- * 
+ * A Livre.
  */
-@ApiModel(description = ""
-    + "not an ignored comment                                                 "
-    + "")
 @Entity
 @Table(name = "livre")
 public class Livre implements Serializable {

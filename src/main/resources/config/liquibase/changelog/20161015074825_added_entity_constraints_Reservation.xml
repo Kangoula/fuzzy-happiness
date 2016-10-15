@@ -6,13 +6,19 @@
     <!--
         Added the constraints for entity Reservation.
     -->
-    <changeSet id="20161010150036-2" author="jhipster">
+    <changeSet id="20161015074825-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="usager_id"
+        <addForeignKeyConstraint baseColumnNames="usager_reservation_id"
                                  baseTableName="reservation"
-                                 constraintName="fk_reservation_usager_id"
+                                 constraintName="fk_reservation_usager_reservation_id"
                                  referencedColumnNames="id"
                                  referencedTableName="usager"/>
+
+        <addForeignKeyConstraint baseColumnNames="exemplaire_reservation_id"
+                                 baseTableName="reservation"
+                                 constraintName="fk_reservation_exemplaire_reservation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="exemplaire"/>
 
     </changeSet>
 </databaseChangeLog>

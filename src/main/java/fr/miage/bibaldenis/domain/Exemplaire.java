@@ -1,18 +1,13 @@
 package fr.miage.bibaldenis.domain;
 
-import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Task entity.@author The JHipster team.                                      
- * 
+ * A Exemplaire.
  */
-@ApiModel(description = ""
-    + "Task entity.@author The JHipster team.                                 "
-    + "")
 @Entity
 @Table(name = "exemplaire")
 public class Exemplaire implements Serializable {
@@ -34,9 +29,6 @@ public class Exemplaire implements Serializable {
 
     @ManyToOne
     private Magazine magazine;
-
-    @ManyToOne
-    private Reservation reservation;
 
     public Long getId() {
         return id;
@@ -96,19 +88,6 @@ public class Exemplaire implements Serializable {
 
     public void setMagazine(Magazine magazine) {
         this.magazine = magazine;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public Exemplaire reservation(Reservation reservation) {
-        this.reservation = reservation;
-        return this;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
     }
 
     @Override

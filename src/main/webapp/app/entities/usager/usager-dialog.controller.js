@@ -5,15 +5,14 @@
         .module('bibalDenisApp')
         .controller('UsagerDialogController', UsagerDialogController);
 
-    UsagerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Usager', 'Reservation', 'Emprunt'];
+    UsagerDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Usager', 'Emprunt'];
 
-    function UsagerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Usager, Reservation, Emprunt) {
+    function UsagerDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Usager, Emprunt) {
         var vm = this;
 
         vm.usager = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.reservations = Reservation.query();
         vm.emprunts = Emprunt.query();
 
         $timeout(function (){

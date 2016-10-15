@@ -1,12 +1,9 @@
 package fr.miage.bibaldenis.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,11 +26,10 @@ public class Reservation implements Serializable {
     private LocalDate dateExpiration;
 
     @ManyToOne
-    private Usager usager;
+    private Usager usagerReservation;
 
-    @OneToMany(mappedBy = "reservation")
-    @JsonIgnore
-    private Set<Exemplaire> reservationExemplaires = new HashSet<>();
+    @ManyToOne
+    private Exemplaire exemplaireReservation;
 
     public Long getId() {
         return id;
@@ -69,42 +65,30 @@ public class Reservation implements Serializable {
         this.dateExpiration = dateExpiration;
     }
 
-    public Usager getUsager() {
-        return usager;
+    public Usager getUsagerReservation() {
+        return usagerReservation;
     }
 
-    public Reservation usager(Usager usager) {
-        this.usager = usager;
+    public Reservation usagerReservation(Usager usager) {
+        this.usagerReservation = usager;
         return this;
     }
 
-    public void setUsager(Usager usager) {
-        this.usager = usager;
+    public void setUsagerReservation(Usager usager) {
+        this.usagerReservation = usager;
     }
 
-    public Set<Exemplaire> getReservationExemplaires() {
-        return reservationExemplaires;
+    public Exemplaire getExemplaireReservation() {
+        return exemplaireReservation;
     }
 
-    public Reservation reservationExemplaires(Set<Exemplaire> exemplaires) {
-        this.reservationExemplaires = exemplaires;
+    public Reservation exemplaireReservation(Exemplaire exemplaire) {
+        this.exemplaireReservation = exemplaire;
         return this;
     }
 
-    public Reservation addReservationExemplaire(Exemplaire exemplaire) {
-        reservationExemplaires.add(exemplaire);
-        exemplaire.setReservation(this);
-        return this;
-    }
-
-    public Reservation removeReservationExemplaire(Exemplaire exemplaire) {
-        reservationExemplaires.remove(exemplaire);
-        exemplaire.setReservation(null);
-        return this;
-    }
-
-    public void setReservationExemplaires(Set<Exemplaire> exemplaires) {
-        this.reservationExemplaires = exemplaires;
+    public void setExemplaireReservation(Exemplaire exemplaire) {
+        this.exemplaireReservation = exemplaire;
     }
 
     @Override

@@ -12,12 +12,6 @@
             "otherEntityName": "magazine",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "reservation",
-            "otherEntityName": "reservation",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -30,8 +24,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20161010150033",
-    "javadoc": "Task entity.@author The JHipster team.",
+    "changelogDate": "20161015074822",
     "entityTableName": "exemplaire",
     "dto": "no",
     "pagination": "no",

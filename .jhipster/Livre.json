@@ -38,8 +38,7 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20161010150032",
-    "javadoc": "not an ignored comment",
+    "changelogDate": "20161015074821",
     "entityTableName": "livre",
     "dto": "no",
     "pagination": "no",

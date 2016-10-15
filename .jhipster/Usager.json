@@ -3,12 +3,6 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "usagerReservation",
-            "otherEntityName": "reservation",
-            "otherEntityRelationshipName": "usager"
-        },
-        {
-            "relationshipType": "one-to-many",
             "relationshipName": "usagerEmprunt",
             "otherEntityName": "emprunt",
             "otherEntityRelationshipName": "usager"
@@ -28,7 +22,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20161010150031",
+    "changelogDate": "20161015074820",
     "entityTableName": "usager",
     "dto": "no",
     "pagination": "no",

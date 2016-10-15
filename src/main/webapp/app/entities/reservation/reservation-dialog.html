@@ -4,14 +4,14 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myReservationLabel">Formulaire Reservation</h4>
+        <h4 class="modal-title" id="myReservationLabel">Create or edit a Reservation</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.reservation.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.reservation.id" readonly disabled />
+                    ng-model="vm.reservation.id" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_date">Date</label>
@@ -35,18 +35,24 @@
         </div>
 
         <div class="form-group">
-            <label for="field_usager">Usager</label>
-            <select class="form-control" id="field_usager" name="usager" ng-model="vm.reservation.usager" ng-options="usager as (usager.prenom + ' ' + usager.nom) for usager in vm.usagers track by usager.id">
+            <label for="field_usagerReservation">Usager Reservation</label>
+            <select class="form-control" id="field_usagerReservation" name="usagerReservation" ng-model="vm.reservation.usagerReservation" ng-options="usager as usager.id for usager in vm.usagers track by usager.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_exemplaireReservation">Exemplaire Reservation</label>
+            <select class="form-control" id="field_exemplaireReservation" name="exemplaireReservation" ng-model="vm.reservation.exemplaireReservation" ng-options="exemplaire as exemplaire.id for exemplaire in vm.exemplaires track by exemplaire.id">
                 <option value=""></option>
             </select>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Sauvegarder</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>
 </form>

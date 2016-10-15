@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="reservation.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Nouvelle Reservation
+                        Create new Reservation
                     </span>
                 </button>
             </div>
@@ -21,17 +21,21 @@
                     <th><span>ID</span></th>
                     <th><span>Date</span></th>
                     <th><span>Date Expiration</span></th>
-                    <th><span>Usager</span></th>
+                    <th><span>Usager Reservation</span></th>
+                    <th><span>Exemplaire Reservation</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="reservation in vm.reservations track by reservation.id">
                     <td><a ui-sref="reservation-detail({id:reservation.id})">{{reservation.id}}</a></td>
-                        <td>{{reservation.date | date:'d, MMM y'}}</td>
-                        <td>{{reservation.dateExpiration | date:'d, MMM y'}}</td>
+                        <td>{{reservation.date | date:'mediumDate'}}</td>
+                        <td>{{reservation.dateExpiration | date:'mediumDate'}}</td>
                     <td>
-                        <a ui-sref="usager-detail({id:reservation.usager.id})">{{reservation.usager.prenom}} {{reservation.usager.nom}}</a>
+                        <a ui-sref="usager-detail({id:reservation.usagerReservation.id})">{{reservation.usagerReservation.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="exemplaire-detail({id:reservation.exemplaireReservation.id})">{{reservation.exemplaireReservation.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

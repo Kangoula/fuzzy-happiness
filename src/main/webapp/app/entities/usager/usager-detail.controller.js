@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('UsagerDetailController', UsagerDetailController);
 
-    UsagerDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Usager', 'Reservation', 'Emprunt'];
+    UsagerDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Usager', 'Emprunt'];
 
-    function UsagerDetailController($scope, $rootScope, $stateParams, previousState, entity, Usager, Reservation, Emprunt) {
+    function UsagerDetailController($scope, $rootScope, $stateParams, previousState, entity, Usager, Emprunt) {
         var vm = this;
 
         vm.usager = entity;

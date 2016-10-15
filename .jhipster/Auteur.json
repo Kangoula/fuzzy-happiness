@@ -24,8 +24,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20161010150034",
-    "javadoc": "The Employee entity.",
+    "changelogDate": "20161015074823",
     "entityTableName": "auteur",
     "dto": "no",
     "pagination": "no",

@@ -32,10 +32,6 @@ public class Usager implements Serializable {
 
     @OneToMany(mappedBy = "usager")
     @JsonIgnore
-    private Set<Reservation> usagerReservations = new HashSet<>();
-
-    @OneToMany(mappedBy = "usager")
-    @JsonIgnore
     private Set<Emprunt> usagerEmprunts = new HashSet<>();
 
     public Long getId() {
@@ -83,31 +79,6 @@ public class Usager implements Serializable {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    public Set<Reservation> getUsagerReservations() {
-        return usagerReservations;
-    }
-
-    public Usager usagerReservations(Set<Reservation> reservations) {
-        this.usagerReservations = reservations;
-        return this;
-    }
-
-    public Usager addUsagerReservation(Reservation reservation) {
-        usagerReservations.add(reservation);
-        reservation.setUsager(this);
-        return this;
-    }
-
-    public Usager removeUsagerReservation(Reservation reservation) {
-        usagerReservations.remove(reservation);
-        reservation.setUsager(null);
-        return this;
-    }
-
-    public void setUsagerReservations(Set<Reservation> reservations) {
-        this.usagerReservations = reservations;
     }
 
     public Set<Emprunt> getUsagerEmprunts() {
