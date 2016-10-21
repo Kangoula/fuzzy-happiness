@@ -14,30 +14,26 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Livre.
+        Added the entity Exemplaire.
     -->
-    <changeSet id="20161015074821-1" author="jhipster">
-        <createTable tableName="livre">
+    <changeSet id="20161021145759-1" author="jhipster">
+        <createTable tableName="exemplaire">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_edition" type="date">
+            <column name="edition" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
-            <column name="resume" type="varchar(255)">
+            <column name="etat" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
-            <column name="nb_resa" type="integer">
+            <column name="magazine_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            
-            <column name="date_ajout" type="date">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="auteur_id" type="bigint">
+
+            <column name="livre_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

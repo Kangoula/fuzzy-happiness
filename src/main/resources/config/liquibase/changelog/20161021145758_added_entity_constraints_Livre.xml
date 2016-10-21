@@ -4,13 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <!--
-        Added the constraints for entity Magazine.
+        Added the constraints for entity Livre.
     -->
-    <changeSet id="20161010150035-2" author="jhipster">
+    <changeSet id="20161021145758-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="auteur_id"
-                                 baseTableName="magazine"
-                                 constraintName="fk_magazine_auteur_id"
+                                 baseTableName="livre"
+                                 constraintName="fk_livre_auteur_id"
                                  referencedColumnNames="id"
                                  referencedTableName="auteur"/>
 
