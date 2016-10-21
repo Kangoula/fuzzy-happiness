@@ -6,30 +6,30 @@
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Date Emprunt</span></dt>
         <dd>
-            <span>{{vm.emprunt.dateEmprunt | date:'dd MM yyy'}}</span>
+            <span>{{vm.emprunt.dateEmprunt | date:'dd MMM. yyyy'}}</span>
         </dd>
         <dt><span>Date Retour</span></dt>
         <dd>
-            <span>{{vm.emprunt.dateRetour | date:'mediumDate'}}</span>
+            <span>{{vm.emprunt.dateRetour | date:'dd MMM. yyyy'}}</span>
         </dd>
         <dt><span>Usager</span></dt>
         <dd>
-            <a ui-sref="usager-detail({id:vm.emprunt.usager.id})">{{vm.emprunt.usager.id}}</a>
+            <a ui-sref="usager-detail({id:vm.emprunt.usager.id})">{{vm.emprunt.usager.prenom}} {{vm.emprunt.usager.nom}}</a>
         </dd>
         <dt><span>Exemplaire</span></dt>
         <dd>
-            <a ui-sref="exemplaire-detail({id:vm.emprunt.exemplaire.id})">{{vm.emprunt.exemplaire.id}}</a>
+            <a ui-sref="exemplaire-detail({id:vm.emprunt.exemplaire.id})">{{vm.emprunt.exemplaire.magazine.titre}}{{vm.emprunt.exemplaire.livre.titre}}</a>
         </dd>
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Retour</span>
     </button>
 
     <button type="button" ui-sref="emprunt-detail.edit({id:vm.emprunt.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm"> Edit</span>
+        <span class="hidden-xs hidden-sm"> Modifier</span>
     </button>
 </div>
