@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="exemplaire.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Nouvel Exemplaire
+                        Create new Exemplaire
                     </span>
                 </button>
             </div>
@@ -21,9 +21,8 @@
                     <th><span>ID</span></th>
                     <th><span>Edition</span></th>
                     <th><span>Etat</span></th>
-                    <th><span>Livre</span></th>
                     <th><span>Magazine</span></th>
-                    <th><span>Reservation</span></th>
+                    <th><span>Livre</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,13 +32,10 @@
                     <td>{{exemplaire.edition}}</td>
                     <td>{{exemplaire.etat}}</td>
                     <td>
-                        <a ui-sref="livre-detail({id:exemplaire.livre.id})">{{exemplaire.livre.titre}} - {{exemplaire.livre.auteur.prenom}} {{exemplaire.livre.auteur.nom}}</a>
+                        <a ui-sref="magazine-detail({id:exemplaire.magazine.id})">{{exemplaire.magazine.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="magazine-detail({id:exemplaire.magazine.id})">{{exemplaire.magazine.titre}} n°{{exempalire.magazine.numero}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="reservation-detail({id:exemplaire.reservation.id})">{{exemplaire.reservation.id}}</a>
+                        <a ui-sref="livre-detail({id:exemplaire.livre.id})">{{exemplaire.livre.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
