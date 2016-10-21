@@ -1,7 +1,6 @@
 package fr.miage.bibaldenis.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,12 +9,8 @@ import java.util.Set;
 import java.util.Objects;
 
 /**
- * The Employee entity.                                                        
- * 
+ * A Auteur.
  */
-@ApiModel(description = ""
-    + "The Employee entity.                                                   "
-    + "")
 @Entity
 @Table(name = "auteur")
 public class Auteur implements Serializable {
