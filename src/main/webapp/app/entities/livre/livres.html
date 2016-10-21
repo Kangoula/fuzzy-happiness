@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="livre.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Livre
+                        Nouveau Livre
                     </span>
                 </button>
             </div>
@@ -20,9 +20,8 @@
                 <tr>
                     <th><span>ID</span></th>
                     <th><span>Titre</span></th>
-                    <th><span>Nb Resa</span></th>
+                    <th><span>Nb Reservations</span></th>
                     <th><span>Date Edition</span></th>
-                    <th><span>Resume</span></th>
                     <th><span>Date Ajout</span></th>
                     <th><span>Auteur</span></th>
                     <th></th>
@@ -33,11 +32,11 @@
                     <td><a ui-sref="livre-detail({id:livre.id})">{{livre.id}}</a></td>
                     <td>{{livre.titre}}</td>
                     <td>{{livre.nbResa}}</td>
-                        <td>{{livre.dateEdition | date:'mediumDate'}}</td>
-                    <td>{{livre.resume}}</td>
-                        <td>{{livre.dateAjout | date:'mediumDate'}}</td>
+                        <td>{{livre.dateEdition | date:'dd MMM. yyyy'}}</td>
+
+                        <td>{{livre.dateAjout | date:'dd MMM. yyyy'}}</td>
                     <td>
-                        <a ui-sref="auteur-detail({id:livre.auteur.id})">{{livre.auteur.id}}</a>
+                        <a ui-sref="auteur-detail({id:livre.auteur.id})">{{vm.livre.auteur.prenom}} {{vm.livre.auteur.nom}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

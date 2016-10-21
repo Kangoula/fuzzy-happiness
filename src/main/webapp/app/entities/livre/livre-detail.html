@@ -8,13 +8,13 @@
         <dd>
             <span>{{vm.livre.titre}}</span>
         </dd>
-        <dt><span>Nb Resa</span></dt>
+        <dt><span>Nb Reservations</span></dt>
         <dd>
             <span>{{vm.livre.nbResa}}</span>
         </dd>
         <dt><span>Date Edition</span></dt>
         <dd>
-            <span>{{vm.livre.dateEdition | date:'mediumDate'}}</span>
+            <span>{{vm.livre.dateEdition | date:'dd MMM. yyyy'}}</span>
         </dd>
         <dt><span>Resume</span></dt>
         <dd>
@@ -22,22 +22,22 @@
         </dd>
         <dt><span>Date Ajout</span></dt>
         <dd>
-            <span>{{vm.livre.dateAjout | date:'mediumDate'}}</span>
+            <span>{{vm.livre.dateAjout | date:'dd MMM. yyyy'}}</span>
         </dd>
         <dt><span>Auteur</span></dt>
         <dd>
-            <a ui-sref="auteur-detail({id:vm.livre.auteur.id})">{{vm.livre.auteur.id}}</a>
+            <a ui-sref="auteur-detail({id:vm.livre.auteur.id})">{{vm.livre.auteur.prenom}} {{vm.livre.auteur.nom}}</a>
         </dd>
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Retour</span>
     </button>
 
     <button type="button" ui-sref="livre-detail.edit({id:vm.livre.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm"> Edit</span>
+        <span class="hidden-xs hidden-sm"> Modifier</span>
     </button>
 </div>
