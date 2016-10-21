@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="magazine.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Magazine
+                        Nouveau Magazine
                     </span>
                 </button>
             </div>
@@ -21,7 +21,7 @@
                     <th><span>ID</span></th>
                     <th><span>Titre</span></th>
                     <th><span>Nb Resa</span></th>
-                    <th><span>Numero</span></th>
+                    <th><span>Numéro</span></th>
                     <th><span>Date Ajout</span></th>
                     <th><span>Auteur</span></th>
                     <th></th>
@@ -33,9 +33,9 @@
                     <td>{{magazine.titre}}</td>
                     <td>{{magazine.nbResa}}</td>
                     <td>{{magazine.numero}}</td>
-                        <td>{{magazine.dateAjout | date:'mediumDate'}}</td>
+                        <td>{{magazine.dateAjout | date:'dd MMM. yyyy'}}</td>
                     <td>
-                        <a ui-sref="auteur-detail({id:magazine.auteur.id})">{{magazine.auteur.id}}</a>
+                        <a ui-sref="auteur-detail({id:magazine.auteur.id})">{{magazine.auteur.prenom}} {{magazine.auteur.nom}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="reservation.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Reservation
+                        Nouvelle Reservation
                     </span>
                 </button>
             </div>
@@ -30,16 +30,16 @@
             <tbody>
                 <tr ng-repeat="reservation in vm.reservations track by reservation.id">
                     <td><a ui-sref="reservation-detail({id:reservation.id})">{{reservation.id}}</a></td>
-                        <td>{{reservation.date | date:'mediumDate'}}</td>
-                        <td>{{reservation.dateExpiration | date:'mediumDate'}}</td>
+                        <td>{{reservation.date | date:'dd MMM. yyyy'}}</td>
+                        <td>{{reservation.dateExpiration | date:'dd MMM. yyyy'}}</td>
                     <td>
-                        <a ui-sref="usager-detail({id:reservation.usagerReservation.id})">{{reservation.usagerReservation.id}}</a>
+                        <a ui-sref="usager-detail({id:reservation.usagerReservation.id})">{{reservation.usagerReservation.prenom}} {{reservation.usagerReservation.nom}}</a>
                     </td>
                     <td>
-                        <a ui-sref="livre-detail({id:reservation.livreReservation.id})">{{reservation.livreReservation.id}}</a>
+                        <a ui-sref="livre-detail({id:reservation.livreReservation.id})">{{reservation.livreReservation.titre}}</a>
                     </td>
                     <td>
-                        <a ui-sref="magazine-detail({id:reservation.magazineReservation.id})">{{reservation.magazineReservation.id}}</a>
+                        <a ui-sref="magazine-detail({id:reservation.magazineReservation.id})">{{reservation.magazineReservation.titre}} {{reservation.magazineReservation.numero}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
