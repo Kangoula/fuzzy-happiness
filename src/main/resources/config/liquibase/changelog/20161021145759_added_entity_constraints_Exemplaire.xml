@@ -6,19 +6,19 @@
     <!--
         Added the constraints for entity Exemplaire.
     -->
-    <changeSet id="20161015074822-2" author="jhipster">
+    <changeSet id="20161021145759-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="livre_id"
-                                 baseTableName="exemplaire"
-                                 constraintName="fk_exemplaire_livre_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="livre"/>
-
         <addForeignKeyConstraint baseColumnNames="magazine_id"
                                  baseTableName="exemplaire"
                                  constraintName="fk_exemplaire_magazine_id"
                                  referencedColumnNames="id"
                                  referencedTableName="magazine"/>
+
+        <addForeignKeyConstraint baseColumnNames="livre_id"
+                                 baseTableName="exemplaire"
+                                 constraintName="fk_exemplaire_livre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="livre"/>
 
     </changeSet>
 </databaseChangeLog>

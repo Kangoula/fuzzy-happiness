@@ -14,26 +14,30 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Reservation.
+        Added the entity Magazine.
     -->
-    <changeSet id="20161015074825-1" author="jhipster">
-        <createTable tableName="reservation">
+    <changeSet id="20161021145757-1" author="jhipster">
+        <createTable tableName="magazine">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date" type="date">
+            <column name="titre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
-            <column name="date_expiration" type="date">
+            <column name="nb_resa" type="integer">
                 <constraints nullable="true" />
             </column>
             
-            <column name="usager_reservation_id" type="bigint">
+            <column name="numero" type="integer">
                 <constraints nullable="true" />
             </column>
-
-            <column name="exemplaire_reservation_id" type="bigint">
+            
+            <column name="date_ajout" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="auteur_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

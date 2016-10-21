@@ -4,19 +4,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <!--
-        Added the constraints for entity Reservation.
+        Added the constraints for entity Emprunt.
     -->
-    <changeSet id="20161015074825-2" author="jhipster">
+    <changeSet id="20161021145755-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="usager_reservation_id"
-                                 baseTableName="reservation"
-                                 constraintName="fk_reservation_usager_reservation_id"
+        <addForeignKeyConstraint baseColumnNames="usager_id"
+                                 baseTableName="emprunt"
+                                 constraintName="fk_emprunt_usager_id"
                                  referencedColumnNames="id"
                                  referencedTableName="usager"/>
 
-        <addForeignKeyConstraint baseColumnNames="exemplaire_reservation_id"
-                                 baseTableName="reservation"
-                                 constraintName="fk_reservation_exemplaire_reservation_id"
+        <addForeignKeyConstraint baseColumnNames="exemplaire_id"
+                                 baseTableName="emprunt"
+                                 constraintName="fk_emprunt_exemplaire_id"
                                  referencedColumnNames="id"
                                  referencedTableName="exemplaire"/>
 
