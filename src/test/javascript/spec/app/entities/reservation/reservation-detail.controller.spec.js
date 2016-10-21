@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Reservation Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockReservation, MockUsager, MockExemplaire;
+        var MockEntity, MockPreviousState, MockReservation, MockUsager, MockLivre, MockMagazine;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -14,7 +14,8 @@ describe('Controller Tests', function() {
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockReservation = jasmine.createSpy('MockReservation');
             MockUsager = jasmine.createSpy('MockUsager');
-            MockExemplaire = jasmine.createSpy('MockExemplaire');
+            MockLivre = jasmine.createSpy('MockLivre');
+            MockMagazine = jasmine.createSpy('MockMagazine');
             
 
             var locals = {
@@ -24,7 +25,8 @@ describe('Controller Tests', function() {
                 'previousState': MockPreviousState,
                 'Reservation': MockReservation,
                 'Usager': MockUsager,
-                'Exemplaire': MockExemplaire
+                'Livre': MockLivre,
+                'Magazine': MockMagazine
             };
             createController = function() {
                 $injector.get('$controller')("ReservationDetailController", locals);

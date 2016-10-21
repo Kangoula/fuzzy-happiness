@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('MagazineDialogController', MagazineDialogController);
 
-    MagazineDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Magazine', 'Auteur', 'Exemplaire', 'Emprunt'];
+    MagazineDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Magazine', 'Exemplaire', 'Auteur'];
 
-    function MagazineDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Magazine, Auteur, Exemplaire, Emprunt) {
+    function MagazineDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Magazine, Exemplaire, Auteur) {
         var vm = this;
 
         vm.magazine = entity;
@@ -15,9 +15,8 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.auteurs = Auteur.query();
         vm.exemplaires = Exemplaire.query();
-        vm.emprunts = Emprunt.query();
+        vm.auteurs = Auteur.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -46,7 +45,6 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.parution = false;
         vm.datePickerOpenStatus.dateAjout = false;
 
         function openCalendar (date) {

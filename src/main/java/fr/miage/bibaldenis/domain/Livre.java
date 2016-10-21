@@ -22,14 +22,17 @@ public class Livre implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "titre")
+    private String titre;
+
+    @Column(name = "nb_resa")
+    private Integer nbResa;
+
     @Column(name = "date_edition")
     private LocalDate dateEdition;
 
     @Column(name = "resume")
     private String resume;
-
-    @Column(name = "nb_resa")
-    private Integer nbResa;
 
     @Column(name = "date_ajout")
     private LocalDate dateAjout;
@@ -37,10 +40,6 @@ public class Livre implements Serializable {
     @OneToMany(mappedBy = "livre")
     @JsonIgnore
     private Set<Exemplaire> livreExemplaires = new HashSet<>();
-
-    @OneToMany(mappedBy = "livre")
-    @JsonIgnore
-    private Set<Emprunt> livreEmprunts = new HashSet<>();
 
     @ManyToOne
     private Auteur auteur;
@@ -51,6 +50,32 @@ public class Livre implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public Livre titre(String titre) {
+        this.titre = titre;
+        return this;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public Integer getNbResa() {
+        return nbResa;
+    }
+
+    public Livre nbResa(Integer nbResa) {
+        this.nbResa = nbResa;
+        return this;
+    }
+
+    public void setNbResa(Integer nbResa) {
+        this.nbResa = nbResa;
     }
 
     public LocalDate getDateEdition() {
@@ -77,19 +102,6 @@ public class Livre implements Serializable {
 
     public void setResume(String resume) {
         this.resume = resume;
-    }
-
-    public Integer getNbResa() {
-        return nbResa;
-    }
-
-    public Livre nbResa(Integer nbResa) {
-        this.nbResa = nbResa;
-        return this;
-    }
-
-    public void setNbResa(Integer nbResa) {
-        this.nbResa = nbResa;
     }
 
     public LocalDate getDateAjout() {
@@ -130,31 +142,6 @@ public class Livre implements Serializable {
         this.livreExemplaires = exemplaires;
     }
 
-    public Set<Emprunt> getLivreEmprunts() {
-        return livreEmprunts;
-    }
-
-    public Livre livreEmprunts(Set<Emprunt> emprunts) {
-        this.livreEmprunts = emprunts;
-        return this;
-    }
-
-    public Livre addLivreEmprunt(Emprunt emprunt) {
-        livreEmprunts.add(emprunt);
-        emprunt.setLivre(this);
-        return this;
-    }
-
-    public Livre removeLivreEmprunt(Emprunt emprunt) {
-        livreEmprunts.remove(emprunt);
-        emprunt.setLivre(null);
-        return this;
-    }
-
-    public void setLivreEmprunts(Set<Emprunt> emprunts) {
-        this.livreEmprunts = emprunts;
-    }
-
     public Auteur getAuteur() {
         return auteur;
     }
@@ -192,9 +179,10 @@ public class Livre implements Serializable {
     public String toString() {
         return "Livre{" +
             "id=" + id +
+            ", titre='" + titre + "'" +
+            ", nbResa='" + nbResa + "'" +
             ", dateEdition='" + dateEdition + "'" +
             ", resume='" + resume + "'" +
-            ", nbResa='" + nbResa + "'" +
             ", dateAjout='" + dateAjout + "'" +
             '}';
     }

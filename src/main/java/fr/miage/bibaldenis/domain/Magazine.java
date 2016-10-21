@@ -22,31 +22,24 @@ public class Magazine implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "numero")
-    private Integer numero;
-
-    @Column(name = "parution")
-    private LocalDate parution;
-
-    @Column(name = "periodicite")
-    private Integer periodicite;
+    @Column(name = "titre")
+    private String titre;
 
     @Column(name = "nb_resa")
     private Integer nbResa;
 
+    @Column(name = "numero")
+    private Integer numero;
+
     @Column(name = "date_ajout")
     private LocalDate dateAjout;
-
-    @ManyToOne
-    private Auteur auteur;
 
     @OneToMany(mappedBy = "magazine")
     @JsonIgnore
     private Set<Exemplaire> magazineExemplaires = new HashSet<>();
 
-    @OneToMany(mappedBy = "magazine")
-    @JsonIgnore
-    private Set<Emprunt> magazineEmprunts = new HashSet<>();
+    @ManyToOne
+    private Auteur auteur;
 
     public Long getId() {
         return id;
@@ -56,43 +49,17 @@ public class Magazine implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public String getTitre() {
+        return titre;
     }
 
-    public Magazine numero(Integer numero) {
-        this.numero = numero;
+    public Magazine titre(String titre) {
+        this.titre = titre;
         return this;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public LocalDate getParution() {
-        return parution;
-    }
-
-    public Magazine parution(LocalDate parution) {
-        this.parution = parution;
-        return this;
-    }
-
-    public void setParution(LocalDate parution) {
-        this.parution = parution;
-    }
-
-    public Integer getPeriodicite() {
-        return periodicite;
-    }
-
-    public Magazine periodicite(Integer periodicite) {
-        this.periodicite = periodicite;
-        return this;
-    }
-
-    public void setPeriodicite(Integer periodicite) {
-        this.periodicite = periodicite;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public Integer getNbResa() {
@@ -108,6 +75,19 @@ public class Magazine implements Serializable {
         this.nbResa = nbResa;
     }
 
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public Magazine numero(Integer numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
     public LocalDate getDateAjout() {
         return dateAjout;
     }
@@ -119,19 +99,6 @@ public class Magazine implements Serializable {
 
     public void setDateAjout(LocalDate dateAjout) {
         this.dateAjout = dateAjout;
-    }
-
-    public Auteur getAuteur() {
-        return auteur;
-    }
-
-    public Magazine auteur(Auteur auteur) {
-        this.auteur = auteur;
-        return this;
-    }
-
-    public void setAuteur(Auteur auteur) {
-        this.auteur = auteur;
     }
 
     public Set<Exemplaire> getMagazineExemplaires() {
@@ -159,29 +126,17 @@ public class Magazine implements Serializable {
         this.magazineExemplaires = exemplaires;
     }
 
-    public Set<Emprunt> getMagazineEmprunts() {
-        return magazineEmprunts;
+    public Auteur getAuteur() {
+        return auteur;
     }
 
-    public Magazine magazineEmprunts(Set<Emprunt> emprunts) {
-        this.magazineEmprunts = emprunts;
+    public Magazine auteur(Auteur auteur) {
+        this.auteur = auteur;
         return this;
     }
 
-    public Magazine addMagazineEmprunt(Emprunt emprunt) {
-        magazineEmprunts.add(emprunt);
-        emprunt.setMagazine(this);
-        return this;
-    }
-
-    public Magazine removeMagazineEmprunt(Emprunt emprunt) {
-        magazineEmprunts.remove(emprunt);
-        emprunt.setMagazine(null);
-        return this;
-    }
-
-    public void setMagazineEmprunts(Set<Emprunt> emprunts) {
-        this.magazineEmprunts = emprunts;
+    public void setAuteur(Auteur auteur) {
+        this.auteur = auteur;
     }
 
     @Override
@@ -208,10 +163,9 @@ public class Magazine implements Serializable {
     public String toString() {
         return "Magazine{" +
             "id=" + id +
-            ", numero='" + numero + "'" +
-            ", parution='" + parution + "'" +
-            ", periodicite='" + periodicite + "'" +
+            ", titre='" + titre + "'" +
             ", nbResa='" + nbResa + "'" +
+            ", numero='" + numero + "'" +
             ", dateAjout='" + dateAjout + "'" +
             '}';
     }

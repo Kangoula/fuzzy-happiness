@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('EmpruntDialogController', EmpruntDialogController);
 
-    EmpruntDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Emprunt', 'Usager', 'Livre', 'Magazine'];
+    EmpruntDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Emprunt', 'Usager', 'Exemplaire'];
 
-    function EmpruntDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Emprunt, Usager, Livre, Magazine) {
+    function EmpruntDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Emprunt, Usager, Exemplaire) {
         var vm = this;
 
         vm.emprunt = entity;
@@ -16,8 +16,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.usagers = Usager.query();
-        vm.livres = Livre.query();
-        vm.magazines = Magazine.query();
+        vm.exemplaires = Exemplaire.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

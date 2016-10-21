@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('EmpruntDetailController', EmpruntDetailController);
 
-    EmpruntDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Emprunt', 'Usager', 'Livre', 'Magazine'];
+    EmpruntDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Emprunt', 'Usager', 'Exemplaire'];
 
-    function EmpruntDetailController($scope, $rootScope, $stateParams, previousState, entity, Emprunt, Usager, Livre, Magazine) {
+    function EmpruntDetailController($scope, $rootScope, $stateParams, previousState, entity, Emprunt, Usager, Exemplaire) {
         var vm = this;
 
         vm.emprunt = entity;

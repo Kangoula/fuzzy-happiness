@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('LivreDetailController', LivreDetailController);
 
-    LivreDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Livre', 'Exemplaire', 'Emprunt', 'Auteur'];
+    LivreDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Livre', 'Exemplaire', 'Auteur'];
 
-    function LivreDetailController($scope, $rootScope, $stateParams, previousState, entity, Livre, Exemplaire, Emprunt, Auteur) {
+    function LivreDetailController($scope, $rootScope, $stateParams, previousState, entity, Livre, Exemplaire, Auteur) {
         var vm = this;
 
         vm.livre = entity;

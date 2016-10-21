@@ -95,9 +95,10 @@
                     resolve: {
                         entity: function () {
                             return {
+                                titre: null,
+                                nbResa: null,
                                 dateEdition: null,
                                 resume: null,
-                                nbResa: null,
                                 dateAjout: null,
                                 id: null
                             };

@@ -2,16 +2,22 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipName": "magazine",
+            "otherEntityName": "magazine",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipName": "livre",
             "otherEntityName": "livre",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "magazine",
-            "otherEntityName": "magazine",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "relationshipType": "one-to-many",
+            "relationshipName": "exemplaireEmprunt",
+            "otherEntityName": "emprunt",
+            "otherEntityRelationshipName": "exemplaire"
         }
     ],
     "fields": [
@@ -24,7 +30,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20161015074822",
+    "changelogDate": "20161021145759",
     "entityTableName": "exemplaire",
     "dto": "no",
     "pagination": "no",

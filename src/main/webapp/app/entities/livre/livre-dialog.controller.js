@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('LivreDialogController', LivreDialogController);
 
-    LivreDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Livre', 'Exemplaire', 'Emprunt', 'Auteur'];
+    LivreDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Livre', 'Exemplaire', 'Auteur'];
 
-    function LivreDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Livre, Exemplaire, Emprunt, Auteur) {
+    function LivreDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Livre, Exemplaire, Auteur) {
         var vm = this;
 
         vm.livre = entity;
@@ -16,7 +16,6 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.exemplaires = Exemplaire.query();
-        vm.emprunts = Emprunt.query();
         vm.auteurs = Auteur.query();
 
         $timeout(function (){

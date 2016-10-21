@@ -24,7 +24,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20161015074823",
+    "changelogDate": "20161021145857",
     "entityTableName": "auteur",
     "dto": "no",
     "pagination": "no",

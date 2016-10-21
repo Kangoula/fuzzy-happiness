@@ -9,8 +9,14 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "exemplaireReservation",
-            "otherEntityName": "exemplaire",
+            "relationshipName": "livreReservation",
+            "otherEntityName": "livre",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "magazineReservation",
+            "otherEntityName": "magazine",
             "otherEntityField": "id"
         }
     ],
@@ -24,7 +30,7 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20161015074825",
+    "changelogDate": "20161021145701",
     "entityTableName": "reservation",
     "dto": "no",
     "pagination": "no",

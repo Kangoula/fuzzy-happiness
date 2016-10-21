@@ -9,15 +9,23 @@ entity Usager {
     adresse String
 }
 
+entity Magazine {
+	titre String,
+    nbResa Integer,
+  	numero Integer,
+  	dateAjout LocalDate
+}
+
 entity Livre {
-  dateEdition LocalDate,
-  resume String,
-  nbResa Integer,
-  dateAjout LocalDate
+	titre String,
+    nbResa Integer,
+  	dateEdition LocalDate,
+  	resume String,
+  	dateAjout LocalDate
 }
 
 entity Exemplaire {
-  edition String,
+  	edition String,
     etat String
 }
 
@@ -26,36 +34,28 @@ entity Auteur {
   prenom String
 }
 
-entity Magazine {
-  numero Integer,
-  parution LocalDate,
-  periodicite Integer,
-  nbResa Integer,
-  dateAjout LocalDate
-}
-
 entity Reservation {
   date LocalDate,
   dateExpiration LocalDate
 }
 
-relationship OneToMany {
-Auteur{auteurMagazine} to Magazine,
-Auteur{auteurLivre} to Livre
-}
-
-relationship OneToMany {
- Magazine{magazineExemplaire} to Exemplaire,
- Livre{livreExemplaire} to Exemplaire
-}
-
 relationship ManyToOne {
 	Reservation{usagerReservation} to Usager,
-    Reservation{exemplaireReservation} to Exemplaire
+    Reservation{livreReservation} to Livre,
+    Reservation{magazineReservation} to Magazine
 }
 
 relationship OneToMany {
   Usager{usagerEmprunt} to Emprunt,
-    Livre{livreEmprunt} to Emprunt,
-    Magazine{magazineEmprunt} to Emprunt
+  Exemplaire{exemplaireEmprunt} to Emprunt
+}
+
+relationship OneToMany {
+	Auteur{auteurMagazine} to Magazine,
+	Auteur{auteurLivre} to Livre
+}
+
+relationship OneToMany {
+	Magazine{magazineExemplaire} to Exemplaire,
+	Livre{livreExemplaire} to Exemplaire
 }

@@ -5,9 +5,9 @@
         .module('bibalDenisApp')
         .controller('ReservationDialogController', ReservationDialogController);
 
-    ReservationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Reservation', 'Usager', 'Exemplaire'];
+    ReservationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Reservation', 'Usager', 'Livre', 'Magazine'];
 
-    function ReservationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Reservation, Usager, Exemplaire) {
+    function ReservationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Reservation, Usager, Livre, Magazine) {
         var vm = this;
 
         vm.reservation = entity;
@@ -16,7 +16,8 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.usagers = Usager.query();
-        vm.exemplaires = Exemplaire.query();
+        vm.livres = Livre.query();
+        vm.magazines = Magazine.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

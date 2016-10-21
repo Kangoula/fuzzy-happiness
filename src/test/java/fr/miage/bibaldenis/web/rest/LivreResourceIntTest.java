@@ -40,14 +40,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = BibalDenisApp.class)
 public class LivreResourceIntTest {
 
+    private static final String DEFAULT_TITRE = "AAAAA";
+    private static final String UPDATED_TITRE = "BBBBB";
+
+    private static final Integer DEFAULT_NB_RESA = 1;
+    private static final Integer UPDATED_NB_RESA = 2;
 
     private static final LocalDate DEFAULT_DATE_EDITION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_EDITION = LocalDate.now(ZoneId.systemDefault());
     private static final String DEFAULT_RESUME = "AAAAA";
     private static final String UPDATED_RESUME = "BBBBB";
-
-    private static final Integer DEFAULT_NB_RESA = 1;
-    private static final Integer UPDATED_NB_RESA = 2;
 
     private static final LocalDate DEFAULT_DATE_AJOUT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_AJOUT = LocalDate.now(ZoneId.systemDefault());
@@ -86,9 +88,10 @@ public class LivreResourceIntTest {
      */
     public static Livre createEntity(EntityManager em) {
         Livre livre = new Livre()
+                .titre(DEFAULT_TITRE)
+                .nbResa(DEFAULT_NB_RESA)
                 .dateEdition(DEFAULT_DATE_EDITION)
                 .resume(DEFAULT_RESUME)
-                .nbResa(DEFAULT_NB_RESA)
                 .dateAjout(DEFAULT_DATE_AJOUT);
         return livre;
     }
@@ -114,9 +117,10 @@ public class LivreResourceIntTest {
         List<Livre> livres = livreRepository.findAll();
         assertThat(livres).hasSize(databaseSizeBeforeCreate + 1);
         Livre testLivre = livres.get(livres.size() - 1);
+        assertThat(testLivre.getTitre()).isEqualTo(DEFAULT_TITRE);
+        assertThat(testLivre.getNbResa()).isEqualTo(DEFAULT_NB_RESA);
         assertThat(testLivre.getDateEdition()).isEqualTo(DEFAULT_DATE_EDITION);
         assertThat(testLivre.getResume()).isEqualTo(DEFAULT_RESUME);
-        assertThat(testLivre.getNbResa()).isEqualTo(DEFAULT_NB_RESA);
         assertThat(testLivre.getDateAjout()).isEqualTo(DEFAULT_DATE_AJOUT);
     }
 
@@ -131,9 +135,10 @@ public class LivreResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(livre.getId().intValue())))
+                .andExpect(jsonPath("$.[*].titre").value(hasItem(DEFAULT_TITRE.toString())))
+                .andExpect(jsonPath("$.[*].nbResa").value(hasItem(DEFAULT_NB_RESA)))
                 .andExpect(jsonPath("$.[*].dateEdition").value(hasItem(DEFAULT_DATE_EDITION.toString())))
                 .andExpect(jsonPath("$.[*].resume").value(hasItem(DEFAULT_RESUME.toString())))
-                .andExpect(jsonPath("$.[*].nbResa").value(hasItem(DEFAULT_NB_RESA)))
                 .andExpect(jsonPath("$.[*].dateAjout").value(hasItem(DEFAULT_DATE_AJOUT.toString())));
     }
 
@@ -148,9 +153,10 @@ public class LivreResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(livre.getId().intValue()))
+            .andExpect(jsonPath("$.titre").value(DEFAULT_TITRE.toString()))
+            .andExpect(jsonPath("$.nbResa").value(DEFAULT_NB_RESA))
             .andExpect(jsonPath("$.dateEdition").value(DEFAULT_DATE_EDITION.toString()))
             .andExpect(jsonPath("$.resume").value(DEFAULT_RESUME.toString()))
-            .andExpect(jsonPath("$.nbResa").value(DEFAULT_NB_RESA))
             .andExpect(jsonPath("$.dateAjout").value(DEFAULT_DATE_AJOUT.toString()));
     }
 
@@ -172,9 +178,10 @@ public class LivreResourceIntTest {
         // Update the livre
         Livre updatedLivre = livreRepository.findOne(livre.getId());
         updatedLivre
+                .titre(UPDATED_TITRE)
+                .nbResa(UPDATED_NB_RESA)
                 .dateEdition(UPDATED_DATE_EDITION)
                 .resume(UPDATED_RESUME)
-                .nbResa(UPDATED_NB_RESA)
                 .dateAjout(UPDATED_DATE_AJOUT);
 
         restLivreMockMvc.perform(put("/api/livres")
@@ -186,9 +193,10 @@ public class LivreResourceIntTest {
         List<Livre> livres = livreRepository.findAll();
         assertThat(livres).hasSize(databaseSizeBeforeUpdate);
         Livre testLivre = livres.get(livres.size() - 1);
+        assertThat(testLivre.getTitre()).isEqualTo(UPDATED_TITRE);
+        assertThat(testLivre.getNbResa()).isEqualTo(UPDATED_NB_RESA);
         assertThat(testLivre.getDateEdition()).isEqualTo(UPDATED_DATE_EDITION);
         assertThat(testLivre.getResume()).isEqualTo(UPDATED_RESUME);
-        assertThat(testLivre.getNbResa()).isEqualTo(UPDATED_NB_RESA);
         assertThat(testLivre.getDateAjout()).isEqualTo(UPDATED_DATE_AJOUT);
     }
 

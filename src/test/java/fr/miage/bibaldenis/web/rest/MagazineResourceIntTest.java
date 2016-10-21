@@ -40,18 +40,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = BibalDenisApp.class)
 public class MagazineResourceIntTest {
 
-
-    private static final Integer DEFAULT_NUMERO = 1;
-    private static final Integer UPDATED_NUMERO = 2;
-
-    private static final LocalDate DEFAULT_PARUTION = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_PARUTION = LocalDate.now(ZoneId.systemDefault());
-
-    private static final Integer DEFAULT_PERIODICITE = 1;
-    private static final Integer UPDATED_PERIODICITE = 2;
+    private static final String DEFAULT_TITRE = "AAAAA";
+    private static final String UPDATED_TITRE = "BBBBB";
 
     private static final Integer DEFAULT_NB_RESA = 1;
     private static final Integer UPDATED_NB_RESA = 2;
+
+    private static final Integer DEFAULT_NUMERO = 1;
+    private static final Integer UPDATED_NUMERO = 2;
 
     private static final LocalDate DEFAULT_DATE_AJOUT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_AJOUT = LocalDate.now(ZoneId.systemDefault());
@@ -90,10 +86,9 @@ public class MagazineResourceIntTest {
      */
     public static Magazine createEntity(EntityManager em) {
         Magazine magazine = new Magazine()
-                .numero(DEFAULT_NUMERO)
-                .parution(DEFAULT_PARUTION)
-                .periodicite(DEFAULT_PERIODICITE)
+                .titre(DEFAULT_TITRE)
                 .nbResa(DEFAULT_NB_RESA)
+                .numero(DEFAULT_NUMERO)
                 .dateAjout(DEFAULT_DATE_AJOUT);
         return magazine;
     }
@@ -119,10 +114,9 @@ public class MagazineResourceIntTest {
         List<Magazine> magazines = magazineRepository.findAll();
         assertThat(magazines).hasSize(databaseSizeBeforeCreate + 1);
         Magazine testMagazine = magazines.get(magazines.size() - 1);
-        assertThat(testMagazine.getNumero()).isEqualTo(DEFAULT_NUMERO);
-        assertThat(testMagazine.getParution()).isEqualTo(DEFAULT_PARUTION);
-        assertThat(testMagazine.getPeriodicite()).isEqualTo(DEFAULT_PERIODICITE);
+        assertThat(testMagazine.getTitre()).isEqualTo(DEFAULT_TITRE);
         assertThat(testMagazine.getNbResa()).isEqualTo(DEFAULT_NB_RESA);
+        assertThat(testMagazine.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testMagazine.getDateAjout()).isEqualTo(DEFAULT_DATE_AJOUT);
     }
 
@@ -137,10 +131,9 @@ public class MagazineResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(magazine.getId().intValue())))
-                .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
-                .andExpect(jsonPath("$.[*].parution").value(hasItem(DEFAULT_PARUTION.toString())))
-                .andExpect(jsonPath("$.[*].periodicite").value(hasItem(DEFAULT_PERIODICITE)))
+                .andExpect(jsonPath("$.[*].titre").value(hasItem(DEFAULT_TITRE.toString())))
                 .andExpect(jsonPath("$.[*].nbResa").value(hasItem(DEFAULT_NB_RESA)))
+                .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
                 .andExpect(jsonPath("$.[*].dateAjout").value(hasItem(DEFAULT_DATE_AJOUT.toString())));
     }
 
@@ -155,10 +148,9 @@ public class MagazineResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(magazine.getId().intValue()))
-            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
-            .andExpect(jsonPath("$.parution").value(DEFAULT_PARUTION.toString()))
-            .andExpect(jsonPath("$.periodicite").value(DEFAULT_PERIODICITE))
+            .andExpect(jsonPath("$.titre").value(DEFAULT_TITRE.toString()))
             .andExpect(jsonPath("$.nbResa").value(DEFAULT_NB_RESA))
+            .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
             .andExpect(jsonPath("$.dateAjout").value(DEFAULT_DATE_AJOUT.toString()));
     }
 
@@ -180,10 +172,9 @@ public class MagazineResourceIntTest {
         // Update the magazine
         Magazine updatedMagazine = magazineRepository.findOne(magazine.getId());
         updatedMagazine
-                .numero(UPDATED_NUMERO)
-                .parution(UPDATED_PARUTION)
-                .periodicite(UPDATED_PERIODICITE)
+                .titre(UPDATED_TITRE)
                 .nbResa(UPDATED_NB_RESA)
+                .numero(UPDATED_NUMERO)
                 .dateAjout(UPDATED_DATE_AJOUT);
 
         restMagazineMockMvc.perform(put("/api/magazines")
@@ -195,10 +186,9 @@ public class MagazineResourceIntTest {
         List<Magazine> magazines = magazineRepository.findAll();
         assertThat(magazines).hasSize(databaseSizeBeforeUpdate);
         Magazine testMagazine = magazines.get(magazines.size() - 1);
-        assertThat(testMagazine.getNumero()).isEqualTo(UPDATED_NUMERO);
-        assertThat(testMagazine.getParution()).isEqualTo(UPDATED_PARUTION);
-        assertThat(testMagazine.getPeriodicite()).isEqualTo(UPDATED_PERIODICITE);
+        assertThat(testMagazine.getTitre()).isEqualTo(UPDATED_TITRE);
         assertThat(testMagazine.getNbResa()).isEqualTo(UPDATED_NB_RESA);
+        assertThat(testMagazine.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testMagazine.getDateAjout()).isEqualTo(UPDATED_DATE_AJOUT);
     }
 

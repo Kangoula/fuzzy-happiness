@@ -29,7 +29,10 @@ public class Reservation implements Serializable {
     private Usager usagerReservation;
 
     @ManyToOne
-    private Exemplaire exemplaireReservation;
+    private Livre livreReservation;
+
+    @ManyToOne
+    private Magazine magazineReservation;
 
     public Long getId() {
         return id;
@@ -78,17 +81,30 @@ public class Reservation implements Serializable {
         this.usagerReservation = usager;
     }
 
-    public Exemplaire getExemplaireReservation() {
-        return exemplaireReservation;
+    public Livre getLivreReservation() {
+        return livreReservation;
     }
 
-    public Reservation exemplaireReservation(Exemplaire exemplaire) {
-        this.exemplaireReservation = exemplaire;
+    public Reservation livreReservation(Livre livre) {
+        this.livreReservation = livre;
         return this;
     }
 
-    public void setExemplaireReservation(Exemplaire exemplaire) {
-        this.exemplaireReservation = exemplaire;
+    public void setLivreReservation(Livre livre) {
+        this.livreReservation = livre;
+    }
+
+    public Magazine getMagazineReservation() {
+        return magazineReservation;
+    }
+
+    public Reservation magazineReservation(Magazine magazine) {
+        this.magazineReservation = magazine;
+        return this;
+    }
+
+    public void setMagazineReservation(Magazine magazine) {
+        this.magazineReservation = magazine;
     }
 
     @Override

@@ -8,12 +8,6 @@
             "otherEntityRelationshipName": "livre"
         },
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "livreEmprunt",
-            "otherEntityName": "emprunt",
-            "otherEntityRelationshipName": "livre"
-        },
-        {
             "relationshipName": "auteur",
             "otherEntityName": "auteur",
             "relationshipType": "many-to-one",
@@ -21,6 +15,14 @@
         }
     ],
     "fields": [
+        {
+            "fieldName": "titre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nbResa",
+            "fieldType": "Integer"
+        },
         {
             "fieldName": "dateEdition",
             "fieldType": "LocalDate"
@@ -30,15 +32,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "nbResa",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "dateAjout",
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20161015074821",
+    "changelogDate": "20161021145758",
     "entityTableName": "livre",
     "dto": "no",
     "pagination": "no",

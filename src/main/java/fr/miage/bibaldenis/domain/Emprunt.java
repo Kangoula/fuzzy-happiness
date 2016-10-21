@@ -29,10 +29,7 @@ public class Emprunt implements Serializable {
     private Usager usager;
 
     @ManyToOne
-    private Livre livre;
-
-    @ManyToOne
-    private Magazine magazine;
+    private Exemplaire exemplaire;
 
     public Long getId() {
         return id;
@@ -81,30 +78,17 @@ public class Emprunt implements Serializable {
         this.usager = usager;
     }
 
-    public Livre getLivre() {
-        return livre;
+    public Exemplaire getExemplaire() {
+        return exemplaire;
     }
 
-    public Emprunt livre(Livre livre) {
-        this.livre = livre;
+    public Emprunt exemplaire(Exemplaire exemplaire) {
+        this.exemplaire = exemplaire;
         return this;
     }
 
-    public void setLivre(Livre livre) {
-        this.livre = livre;
-    }
-
-    public Magazine getMagazine() {
-        return magazine;
-    }
-
-    public Emprunt magazine(Magazine magazine) {
-        this.magazine = magazine;
-        return this;
-    }
-
-    public void setMagazine(Magazine magazine) {
-        this.magazine = magazine;
+    public void setExemplaire(Exemplaire exemplaire) {
+        this.exemplaire = exemplaire;
     }
 
     @Override

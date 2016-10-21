@@ -12,28 +12,24 @@
         <dd>
             <span>{{vm.exemplaire.etat}}</span>
         </dd>
-        <dt><span>Livre</span></dt>
-        <dd>
-            <a ui-sref="livre-detail({id:vm.exemplaire.livre.id})">{{vm.exemplaire.livre.titre}} - {{vm.exemplaire.livre.auteur.prenom}} {{vm.exemplaire.livre.auteur.nom}}</a>
-        </dd>
         <dt><span>Magazine</span></dt>
         <dd>
             <a ui-sref="magazine-detail({id:vm.exemplaire.magazine.id})">{{vm.exemplaire.magazine.id}}</a>
         </dd>
-        <dt><span>Reservation</span></dt>
+        <dt><span>Livre</span></dt>
         <dd>
-            <a ui-sref="reservation-detail({id:vm.exemplaire.reservation.id})">{{vm.exemplaire.reservation.id}}</a>
+            <a ui-sref="livre-detail({id:vm.exemplaire.livre.id})">{{vm.exemplaire.livre.id}}</a>
         </dd>
     </dl>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Retour</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button" ui-sref="exemplaire-detail.edit({id:vm.exemplaire.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm"> Modifier</span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
     </button>
 </div>

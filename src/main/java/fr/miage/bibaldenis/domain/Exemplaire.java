@@ -1,8 +1,11 @@
 package fr.miage.bibaldenis.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -25,10 +28,14 @@ public class Exemplaire implements Serializable {
     private String etat;
 
     @ManyToOne
-    private Livre livre;
+    private Magazine magazine;
 
     @ManyToOne
-    private Magazine magazine;
+    private Livre livre;
+
+    @OneToMany(mappedBy = "exemplaire")
+    @JsonIgnore
+    private Set<Emprunt> exemplaireEmprunts = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -64,6 +71,19 @@ public class Exemplaire implements Serializable {
         this.etat = etat;
     }
 
+    public Magazine getMagazine() {
+        return magazine;
+    }
+
+    public Exemplaire magazine(Magazine magazine) {
+        this.magazine = magazine;
+        return this;
+    }
+
+    public void setMagazine(Magazine magazine) {
+        this.magazine = magazine;
+    }
+
     public Livre getLivre() {
         return livre;
     }
@@ -77,17 +97,29 @@ public class Exemplaire implements Serializable {
         this.livre = livre;
     }
 
-    public Magazine getMagazine() {
-        return magazine;
+    public Set<Emprunt> getExemplaireEmprunts() {
+        return exemplaireEmprunts;
     }
 
-    public Exemplaire magazine(Magazine magazine) {
-        this.magazine = magazine;
+    public Exemplaire exemplaireEmprunts(Set<Emprunt> emprunts) {
+        this.exemplaireEmprunts = emprunts;
         return this;
     }
 
-    public void setMagazine(Magazine magazine) {
-        this.magazine = magazine;
+    public Exemplaire addExemplaireEmprunt(Emprunt emprunt) {
+        exemplaireEmprunts.add(emprunt);
+        emprunt.setExemplaire(this);
+        return this;
+    }
+
+    public Exemplaire removeExemplaireEmprunt(Emprunt emprunt) {
+        exemplaireEmprunts.remove(emprunt);
+        emprunt.setExemplaire(null);
+        return this;
+    }
+
+    public void setExemplaireEmprunts(Set<Emprunt> emprunts) {
+        this.exemplaireEmprunts = emprunts;
     }
 
     @Override

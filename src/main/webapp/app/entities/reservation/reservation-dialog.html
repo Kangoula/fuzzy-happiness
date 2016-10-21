@@ -41,8 +41,14 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="field_exemplaireReservation">Exemplaire Reservation</label>
-            <select class="form-control" id="field_exemplaireReservation" name="exemplaireReservation" ng-model="vm.reservation.exemplaireReservation" ng-options="exemplaire as exemplaire.id for exemplaire in vm.exemplaires track by exemplaire.id">
+            <label for="field_livreReservation">Livre Reservation</label>
+            <select class="form-control" id="field_livreReservation" name="livreReservation" ng-model="vm.reservation.livreReservation" ng-options="livre as livre.id for livre in vm.livres track by livre.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_magazineReservation">Magazine Reservation</label>
+            <select class="form-control" id="field_magazineReservation" name="magazineReservation" ng-model="vm.reservation.magazineReservation" ng-options="magazine as magazine.id for magazine in vm.magazines track by magazine.id">
                 <option value=""></option>
             </select>
         </div>

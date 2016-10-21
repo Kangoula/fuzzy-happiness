@@ -95,10 +95,9 @@
                     resolve: {
                         entity: function () {
                             return {
-                                numero: null,
-                                parution: null,
-                                periodicite: null,
+                                titre: null,
                                 nbResa: null,
+                                numero: null,
                                 dateAjout: null,
                                 id: null
                             };
