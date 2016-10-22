@@ -36,7 +36,7 @@
 
                         <td>{{livre.dateAjout | date:'dd MMM. yyyy'}}</td>
                     <td>
-                        <a ui-sref="auteur-detail({id:livre.auteur.id})">{{vm.livre.auteur.prenom}} {{vm.livre.auteur.nom}}</a>
+                        <a ui-sref="auteur-detail({id:livre.auteur.id})">{{livre.auteur.prenom}} {{livre.auteur.nom}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
