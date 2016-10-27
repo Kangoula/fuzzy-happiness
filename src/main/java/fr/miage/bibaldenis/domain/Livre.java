@@ -44,6 +44,10 @@ public class Livre implements Serializable {
     @ManyToOne
     private Auteur auteur;
 
+    public Livre() {
+        this.nbResa = 0;
+    }
+
     public Long getId() {
         return id;
     }

@@ -41,6 +41,11 @@ public class Magazine implements Serializable {
     @ManyToOne
     private Auteur auteur;
 
+
+    public Magazine() {
+        this.nbResa=0;
+    }
+
     public Long getId() {
         return id;
     }
