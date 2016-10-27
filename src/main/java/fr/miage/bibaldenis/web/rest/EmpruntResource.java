@@ -3,7 +3,9 @@ package fr.miage.bibaldenis.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import fr.miage.bibaldenis.domain.Emprunt;
 
+import fr.miage.bibaldenis.domain.Reservation;
 import fr.miage.bibaldenis.repository.EmpruntRepository;
+import fr.miage.bibaldenis.repository.ReservationRepository;
 import fr.miage.bibaldenis.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Emprunt.
@@ -27,9 +31,11 @@ import java.util.Optional;
 public class EmpruntResource {
 
     private final Logger log = LoggerFactory.getLogger(EmpruntResource.class);
-        
+
     @Inject
     private EmpruntRepository empruntRepository;
+    @Inject
+    private ReservationRepository reservationRepository;
 
     /**
      * POST  /emprunts : Create a new emprunt.
@@ -47,6 +53,21 @@ public class EmpruntResource {
         if (emprunt.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("emprunt", "idexists", "A new emprunt cannot already have an ID")).body(null);
         }
+
+        //delete Reservation associated with the Livre and Usager
+        if(emprunt.getExemplaire().getLivre() != null){
+            List<Reservation> res = reservationRepository.findByUsagerAndLivre(emprunt.getUsager(), emprunt.getExemplaire().getLivre());
+            log.debug("DELETE Reservation by usager and Livre : " + res);
+            reservationRepository.delete(res);
+        }
+
+        //delete Reservation associated with the Magazine and Usager
+        if(emprunt.getExemplaire().getMagazine() != null){
+            List<Reservation> res = reservationRepository.findByUsagerAndLMagazine(emprunt.getUsager(), emprunt.getExemplaire().getMagazine());
+            log.debug("DELETE Reservation by usager and Magazine : " + res);
+            reservationRepository.delete(res);
+        }
+
         Emprunt result = empruntRepository.save(emprunt);
         return ResponseEntity.created(new URI("/api/emprunts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("emprunt", result.getId().toString()))
