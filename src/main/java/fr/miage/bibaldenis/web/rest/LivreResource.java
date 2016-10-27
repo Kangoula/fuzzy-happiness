@@ -27,7 +27,7 @@ import java.util.Optional;
 public class LivreResource {
 
     private final Logger log = LoggerFactory.getLogger(LivreResource.class);
-        
+
     @Inject
     private LivreRepository livreRepository;
 
@@ -47,6 +47,8 @@ public class LivreResource {
         if (livre.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("livre", "idexists", "A new livre cannot already have an ID")).body(null);
         }
+        if(livre.getNbResa() == null)
+            livre.setNbResa(0);
         Livre result = livreRepository.save(livre);
         return ResponseEntity.created(new URI("/api/livres/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("livre", result.getId().toString()))
@@ -71,6 +73,8 @@ public class LivreResource {
         if (livre.getId() == null) {
             return createLivre(livre);
         }
+        if(livre.getNbResa() == null)
+            livre.setNbResa(0);
         Livre result = livreRepository.save(livre);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("livre", livre.getId().toString()))

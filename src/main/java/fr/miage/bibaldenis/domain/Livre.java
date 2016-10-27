@@ -26,7 +26,7 @@ public class Livre implements Serializable {
     private String titre;
 
     @Column(name = "nb_resa")
-    private Integer nbResa;
+    private Integer nbResa = 0;
 
     @Column(name = "date_edition")
     private LocalDate dateEdition;

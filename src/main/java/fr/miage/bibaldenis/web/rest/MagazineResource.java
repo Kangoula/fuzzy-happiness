@@ -27,7 +27,7 @@ import java.util.Optional;
 public class MagazineResource {
 
     private final Logger log = LoggerFactory.getLogger(MagazineResource.class);
-        
+
     @Inject
     private MagazineRepository magazineRepository;
 
@@ -47,6 +47,9 @@ public class MagazineResource {
         if (magazine.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("magazine", "idexists", "A new magazine cannot already have an ID")).body(null);
         }
+
+        if(magazine.getNbResa()== null)
+            magazine.setNbResa(0);
         Magazine result = magazineRepository.save(magazine);
         return ResponseEntity.created(new URI("/api/magazines/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("magazine", result.getId().toString()))
@@ -71,6 +74,8 @@ public class MagazineResource {
         if (magazine.getId() == null) {
             return createMagazine(magazine);
         }
+        if(magazine.getNbResa()== null)
+            magazine.setNbResa(0);
         Magazine result = magazineRepository.save(magazine);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("magazine", magazine.getId().toString()))
