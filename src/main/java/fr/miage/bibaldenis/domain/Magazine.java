@@ -139,6 +139,15 @@ public class Magazine implements Serializable {
         this.auteur = auteur;
     }
 
+
+    public void ajouterResa(){
+        this.nbResa++;
+    }
+
+    public void supprimerResa(){
+        this.nbResa = Math.max(0, this.nbResa-1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

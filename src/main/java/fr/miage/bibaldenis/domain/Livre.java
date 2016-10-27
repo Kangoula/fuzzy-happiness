@@ -78,6 +78,14 @@ public class Livre implements Serializable {
         this.nbResa = nbResa;
     }
 
+    public void ajouterResa(){
+        this.nbResa++;
+    }
+
+    public void supprimerResa(){
+        this.nbResa = Math.max(0, this.nbResa-1);
+    }
+
     public LocalDate getDateEdition() {
         return dateEdition;
     }

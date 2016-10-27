@@ -86,12 +86,18 @@ public class Reservation implements Serializable {
     }
 
     public Reservation livreReservation(Livre livre) {
+        if(this.livreReservation != null)
+            this.livreReservation.supprimerResa();
         this.livreReservation = livre;
+        this.livreReservation.ajouterResa();
         return this;
     }
 
     public void setLivreReservation(Livre livre) {
+        if(this.livreReservation != null)
+            this.livreReservation.supprimerResa();
         this.livreReservation = livre;
+        this.livreReservation.ajouterResa();
     }
 
     public Magazine getMagazineReservation() {
@@ -99,12 +105,18 @@ public class Reservation implements Serializable {
     }
 
     public Reservation magazineReservation(Magazine magazine) {
+        if(this.magazineReservation != null)
+            this.magazineReservation.supprimerResa();
         this.magazineReservation = magazine;
+        this.magazineReservation.ajouterResa();
         return this;
     }
 
     public void setMagazineReservation(Magazine magazine) {
+        if(this.magazineReservation != null)
+            this.magazineReservation.supprimerResa();
         this.magazineReservation = magazine;
+        this.magazineReservation.ajouterResa();
     }
 
     @Override
