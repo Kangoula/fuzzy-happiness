@@ -32,6 +32,9 @@
             vm.isSaving = true;
             if (vm.emprunt.id !== null) {
                 Emprunt.update(vm.emprunt, onSaveSuccess, onSaveError);
+                if(vm.emprunt.exemplaire.id !== null){
+                    Exemplaire.update(vm.emprunt.exemplaire, onSaveSuccess, onSaveError);
+                }
             } else {
                 Emprunt.save(vm.emprunt, onSaveSuccess, onSaveError);
             }
