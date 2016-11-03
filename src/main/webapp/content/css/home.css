@@ -1,0 +1,41 @@
+.liste-publique h1{
+    text-align:center;
+}
+
+.liste-publique li{
+    padding: 0.5em 0;
+}
+
+.liste-publique li titre{
+    font-size:large;
+    font-weight:bold;
+}
+
+.liste-publique li titre:after{
+    content:","
+}
+
+.liste-publique li auteur{
+    text-transform:uppercase;
+    font-size:small;
+}
+.liste-publique li auteur:after{
+    content:".";
+}
+.liste-publique li date:before{
+    content:"Paru le : "
+}
+.liste-publique li date{
+    float:right;
+}
+.liste-publique li abstract{
+    height:3.1em;
+    display: block; /* Fallback for non-webkit */
+    overflow:hidden;
+    text-align:justify;
+}
+
+.liste-publique li abstract:after {
+    content:"…";
+}
+
