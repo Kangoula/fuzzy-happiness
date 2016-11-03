@@ -15,6 +15,66 @@
     </div>
     <br/>
     <div class="table-responsive">
+
+        <!--non rendu-->
+
+        <h3 class="col-md-6" ng-if="vm.someEnRetard()">
+            En retard:
+        </h3>
+        <table ng-if="vm.someEnRetard()" class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th><span>ID</span></th>
+                <th><span>Date Emprunt</span></th>
+                <th><span>Date Retour</span></th>
+                <th><span>Usager</span></th>
+                <th><span>Exemplaire</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="emprunt in vm.emprunts.filter(vm.enRetard) track by emprunt.id">
+                <td><a ui-sref="emprunt-detail({id:emprunt.id})">{{emprunt.id}}</a></td>
+                <td>{{emprunt.dateEmprunt | date:'dd MMM. yyyy'}}</td>
+                <td>{{emprunt.dateRetour | date:'dd MMM. yyyy'}}</td>
+                <td>
+                    <a ui-sref="usager-detail({id:emprunt.usager.id})">{{emprunt.usager.prenom}} {{emprunt.usager.nom}}</a>
+                </td>
+                <td>
+                    <a ui-sref="exemplaire-detail({id:emprunt.exemplaire.id})">{{emprunt.exemplaire.livre.titre}}{{emprunt.exemplaire.magazine.titre}}</a>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="emprunt-detail({id:emprunt.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="emprunt.edit({id:emprunt.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="emprunt.delete({id:emprunt.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+        <!--rendu-->
+        <h3 class="col-md-6" ng-if="vm.someEnRetard()">
+            Dans les temps:
+        </h3>
         <table class="jh-table table table-striped">
             <thead>
                 <tr>
@@ -27,7 +87,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="emprunt in vm.emprunts track by emprunt.id">
+                <tr ng-repeat="emprunt in vm.emprunts.filter(vm.nonEnRetard) track by emprunt.id">
                     <td><a ui-sref="emprunt-detail({id:emprunt.id})">{{emprunt.id}}</a></td>
                         <td>{{emprunt.dateEmprunt | date:'dd MMM. yyyy'}}</td>
                         <td>{{emprunt.dateRetour | date:'dd MMM. yyyy'}}</td>
@@ -62,5 +122,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </>
 </div>
