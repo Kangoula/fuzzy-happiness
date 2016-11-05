@@ -34,6 +34,7 @@
                 Emprunt.update(vm.emprunt, onSaveSuccess, onSaveError);
                 if(vm.emprunt.exemplaire.id !== null){
                     Exemplaire.update(vm.emprunt.exemplaire, onSaveSuccess, onSaveError);
+                    //Emprunt.delete({id: vm.emprunt.id})
                 }
             } else {
                 Emprunt.save(vm.emprunt, onSaveSuccess, onSaveError);
