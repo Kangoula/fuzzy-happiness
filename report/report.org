@@ -1,0 +1,437 @@
+#+TITLE: Bibal @@latex:\\@@ \small{Application de gestion de bibliothèque}
+#+LANGUAGE: fr
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper,12pt]
+#+OPTIONS: toc:nil title:nil author:nil
+
+#+LaTeX_HEADER: \usepackage{fullpage}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage[francais]{babel}
+#+LaTeX_HEADER: \usepackage{lmodern}
+#+LaTeX_HEADER: \usepackage{authblk}
+
+#+LaTeX_HEADER: \author[]{Guillaume Denis\thanks{guillaume.denis3@etu.univ-lorraine.fr}}
+#+LaTeX_HEADER: \author[]{Geoffrey Gaillard\thanks{geoffrey.gaillard3@etu.univ-lorraine.fr}}
+#+LaTeX_HEADER: \affil{Université de Lorraine, UFR Mathématiques et Informatique}
+#+LaTeX_HEADER: \renewcommand\Authand{  et }
+
+#+LaTeX_HEADER: \hypersetup{
+#+LaTeX_HEADER:    colorlinks,%
+#+LaTeX_HEADER:    citecolor=black,%
+#+LaTeX_HEADER:    filecolor=black,%
+#+LaTeX_HEADER:    linkcolor=black,%
+#+LaTeX_HEADER:    urlcolor=blue
+#+LaTeX_HEADER: }
+
+#+LaTeX: \vfill
+
+#+LaTeX: \maketitle
+
+#+LaTeX: \thispagestyle{empty}
+
+#+LaTeX: \clearpage
+
+
+#+LaTeX: \thispagestyle{empty}
+
+#+LaTeX: \tableofcontents
+
+#+LaTeX: \clearpage
+
+
+
+* Analyse du cahier des charges
+
+** Rappel
+
+   Bibal est une application de gestion de bibliothèque destinée à assurer le suivi
+   des ouvrages, des exemplaires, des auteurs, des usagers ainsi que leurs emprunts
+   et réservations. La bibliothèque possède deux types d’ouvrage: les livres et les
+   magazines. Les usagers n’ont accès qu'à la page d’accueil de l’application, où
+   ils peuvent consulter la liste des ouvrages de la bibliothèque. Ils doivent
+   passer par l’intermédiaire d’un bibliothécaire pour effectuer des réservations,
+   des emprunts ou consulter la disponibilité des exemplaires.
+
+** L’analyse de la demande
+
+
+
+   Nous avons discerné trois cas d’usage :
+   - gérer les usagers, c'est-à-dire les personnes consultant la bibliothèque dans le but d’utiliser ses services,
+   - gérer les ouvrages et les exemplaires, c'est-à-dire toutes les ressources bibliographiques,
+   - gérer emprunt et réservation, qui concerne les services proposés par la bibliothèque aux usagers.
+
+   Une œuvre représente soit un livre soit un magazine et est immatérielle. Elle
+   désigne bien l’œuvre et non un exemplaire d’un livre ou d’un magazine. Un
+   exemplaire est un livre physique ou un magazine physique. Un exemplaire peut
+   être emprunté, être réservé, être rendu, être abîmé. Un usager est un
+   utilisateur de l’application Bibal, qu’il soit employé de la bibliothèque ou
+   non. Une réservation concerne une œuvre et un usager. L’usager peut donc
+   réserver une œuvre, dès qu’un exemplaire de cette œuvre est disponible,
+   l’usager peut l’emprunter. Sa réservation devient alors un emprunt.\\
+
+
+
+   La gestion des usagers inclus:
+   - laisser la possibilité aux usagers sans droits de consulter les œuvres disponibles,
+   - l’ajout, la modification et la suppression d’un usager,
+   - l’affectation d’un usager à une réservation ou à un emprunt.
+
+   La gestion des ouvrages inclus:
+   - l’ajout, la modification et la suppression des œuvres et des exemplaires,
+   - le suivi des nouvelles œuvres des auteurs,
+   - le suivi des parutions des magazines.
+
+   La gestion des exemplaires et des réservations concerne:
+   - le suivi de l’état (en état, abîmé, etc.) des exemplaires,
+   - le suivi du statut des exemplaires (emprunté, réservé, disponible).
+
+   #+LaTeX: \clearpage
+
+* Modélisation de la solution
+** Les usages
+
+   Voici, sous forme schématique, les trois cas d’usage que nous avons discerné:
+
+   #+CAPTION: Cas d'utilisation
+   #+NAME:   fig:cas-d-usage
+   [[./res/img/cas-d-utilisation.png]]
+
+
+   On retrouve les trois pôles que qui ont été extraits suite à notre analyse du cahier des charges :
+   - gérer les usagers,
+   - gérer les ouvrages et les exemplaires,
+   - gérer les emprunts et les réservations.
+   - Chaque pôle doit permettre d’effectuer les opérations basiques de lecture, création, modification et
+     suppression (on utilisera le l'acronyme CRUD pour désigner ces opérations).
+
+
+   Dans le cas des emprunts et des réservations un cas d’usage s’ajoute à ces
+   opérations basiques, rendre un exemplaire qui a été emprunté. Il est lui-même
+   décliné en trois cas d’utilisation en fonction de différents paramètres :
+   - Rendu d’un exemplaire abîmé,
+   - Rendu d’un exemplaire après la date limite,
+   - Rendu d’un exemplaire réservé par un autre utilisateur.
+
+   Lors de l’implémentation de l’application, ces cas d’utilisation devront tous être réalisables.
+
+
+   Pour décrire plus finement les cas d’utilisation modélisés précédemment nous
+   avons utilisé des diagrammes d’activité. Cela nous a permis, pour chaque cas
+   d’utilisation, de définir les étapes à réaliser pour mener à bien ce cas. Nous
+   allons nous concentrer sur deux cas d’utilisation : réserver une œuvre et
+   emprunter un exemplaire d’une œuvre réservée.
+
+
+*** Réserver une œuvre
+    #+CAPTION: Réserver une œuvre
+    #+NAME: fig:reserver-une-œuvre
+    [[./res/img/reserver-oeuvre1.png]]
+
+    Le but de ce cas d’utilisation est la création d’une réservation pour
+    une œuvre donnée. Les étapes nécessaires et obligatoires à cette création
+    sont l’identification de l’œuvre en question et l’identification de l’usager
+    qui désire réserver l’œuvre. Il s’agit de la partie lecture des opérations
+    CRUD d’une œuvre et d’un usager.
+    Une fois les deux entités identifiées la bibliothécaire peut réserver une
+    œuvre au nom de l’usager datée du jour.
+
+#+LaTeX: \clearpage
+
+*** Emprunter un exemplaire d’une œuvre réservée
+
+    #+LaTeX: \begin{wrapfigure}[15]{r}{0.4\linewidth}
+#    #LaTeX: \caption{Emprunter un exemplaire d'une œuvre réservée}
+    #+LaTeX: \label{wrap-fig:emprunt-reserve}
+    #+LaTeX: \includegraphics[width=\linewidth]{./res/img/emprunter-exemplaire-d-une-oeuvre-reservee.png}
+    #+LaTeX: \end{wrapfigure}
+
+
+    Ce cas d’utilisation annule une réservation effectuée par un usager lorsque
+    celui-ci parvient à emprunter un exemplaire de l’œuvre réservée.
+
+    Afin de parvenir à l’annulation effective de la réservation (équivalent à une suppression dans les opérations CRUD), la bibliothécaire doit passer par plusieurs étapes :
+
+    - Trouver la réservation émise sur l’œuvre concernée par l’usager concerné,
+    - Trouver un exemplaire de cette œuvre qui n’est pas emprunté,
+    - Créer un emprunt pour l’exemplaire par l’usager.
+
+
+    Les diagrammes pour les autres cas d’utilisation sont disponibles en annexe.
+
+** Logique applicative
+
+   Une fois la logique métier bien définie grâce aux cas d’utilisation et aux
+   diagrammes d’activité nous avons modélisé la logique applicative de la
+   solution au besoin exprimé dans le cahier des charges.
+
+   Dans un premier temps, un diagramme des classes nous a permis de définir les
+   objets métiers qui sont nécessaires à la réalisation de l’application. Pour les
+   cas induisant un changement d’état d’un objet métier, une modélisation à l’aide
+   d’un diagramme d’états a été choisie. Enfin, nous avons modélisé les
+   enchaînements de traitements effectués par l’application à l’aide de diagrammes
+   de séquence.
+
+   #+LaTeX: \clearpage
+
+*** Diagramme de classes
+
+    #+CAPTION: Diagramme de classes
+    #+NAME: fig:diagramme-de-classes
+    [[./res/img/diagramme-des-classes.png]]
+
+
+
+    Nos objets métiers sont regroupés dans le paquetage ~Model~. Il représente les
+    liaisons entre chaque entité. On peut par exemple voir qu’un Exemplaire est
+    associé à 1 ou plusieurs Emprunt(s).
+
+    Le paquetage ~Controller~ regroupe tout ce qui concerne la manipulation de ces
+    objets métiers. Les opérations basiques CRUD ne sont pas représentées car
+    elles sont présentes dans chaque entité.
+
+    Le paquetage ~View~ regroupe tout ce qui concerne l’Interface Homme Machine de
+    l’application. C’est avec les fonctions de ces entités que la bibliothécaire
+    va interagir.
+
+    #+LaTeX: \clearpage
+
+*** Diagramme d’états
+
+    L’entité Œuvre a demandé l’utilisation d’un diagramme d’états pour décrire
+    comment le nombre de réservations d’une œuvre donnée va évoluer pendant
+    l’utilisation de l’application.
+
+
+    #+CAPTION:État d'une œuvre
+    #+NAME: fig:diagramme-d-etat
+    [[./res/img/oeuvre.png]]
+
+
+    Une œuvre va passer par 2 états : ~Non réservée~ et ~Réservée~. Lorsqu’une
+    nouvelle œuvre est ajoutée par la bibliothécaire, elle n’est pas réservée
+    par défaut (son nombre de réservations et donc de 0).
+    Un utilisateur réservant une œuvre induit une incrémentation du nombre de réservations de 1.
+    L’œuvre passe donc dans l’état ~Réservée~.
+    Une annulation de réservation induit une décrémentation du nombre de réservations de 1.
+    Une fois le nombre de réservations à 0, l’œuvre repasse dans l’état ~Non réservée~.
+
+*** Diagrammes de séquences
+
+    Seuls les diagrammes de séquence des deux cas d’utilisation présentés vont être décrit ici.
+
+**** Réserver une œuvre
+
+    #+CAPTION: Réserver une œuvre
+    #+NAME: fig:diagramme-de-sequence
+    [[./res/img/reserver-oeuvre.png]]
+
+
+    Afin de créer une réservation pour une œuvre, la bibliothécaire va dans un
+    premier temps interagir avec l’IHM (une entité de notre paquetage ~View~ dans le
+    diagramme des classes) en renseignant les informations nécessaires (celles pour
+    permettre l’identification de l’Usager et de l’Œuvre). Cette IHM interagit avec
+    le contrôleur qui lui est associé (une entité du paquetage ~Controller~ du
+    diagramme des classes). Ainsi, il permet d’identifier l’usager grâce aux
+    informations remplies par la bibliothécaire. L’application va ensuite identifier
+    l’œuvre concernée. Pour finir, elle va créer une réservation concernant
+    l’œuvre identifiée pour l’usager identifié, en ajoutant la date du jour).
+
+**** Emprunter un exemplaire d’une œuvre réservée
+
+    #+CAPTION: Emprunter un exemplaire
+    #+NAME: fig:emprunter-un-exemplaire
+    [[./res/img/emprunter-exemplaire1.png]]
+
+    Le principe est similaire au précédent diagramme.
+    La bibliothécaire interagit avec l’IHM pour renseigner les informations
+    nécessaires à l’identification de l’œuvre, de l’usager et de l’exemplaire.
+    Le contrôleur associé va interagir avec les objets métiers Usager, Œuvre,
+    Exemplaire et Réservation. Il va récupérer l’usager concerné par l’emprunt,
+    identifier l’œuvre, récupérer un exemplaire de cette œuvre. La réservation
+    de cet usager pour l’œuvre concernée et supprimée, et un nouvel emprunt est
+    créé.
+
+
+
+** Architecture de la solution
+
+*** Diagramme de composants
+
+    #+LaTeX: \begin{wrapfigure}[15]{r}{0.4\linewidth}
+    #+LaTeX: \vspace{-17pt}
+#    #LaTeX: \caption{Emprunter un exemplaire d'une œuvre réservée}
+    #+LaTeX: \label{wrap-fig:emprunt-reserve}
+    #+LaTeX: \includegraphics[width=\linewidth]{./res/img/ihm.png}
+    #+LaTeX: \end{wrapfigure}
+
+    Comme on a pu le voir dans le diagramme des classes, l’application se
+    découpe en trois couches qui interagissent entre elles. L’interface
+    utilisateur de la bibliothèque qui va permettre à la bibliothécaire
+    d’effectuer les actions exprimées dans le cahier des charges. L’application
+    de gestion, contient les entités qui vont interagir avec les objets métiers.
+    Les objets métiers de la bibliothèque qui sont la représentation physique
+    des données.
+
+    De cette description succincte des composants de l’application découle le
+    diagramme de déploiement, qui va permettre de définir l’architecture
+    applicative de la solution.
+
+
+*** Diagramme de déploiement
+
+    #+CAPTION: Diagramme de déploiement
+    #+NAME: fig:diagramme-de-déploiement
+    [[./res/img/diagramme-de-deploiement.png]]
+
+    Ici dans un cadre d’application en production, les données physiques sont
+    stockées dans un SGBD. Il communique par protocole TCP/IP à l’application de
+    gestion de la bibliothèque contenue dans un serveur d’application sur une
+    machine avec une JVM.
+
+* Implémentation
+** Particularités
+
+   Comme vu sur le diagramme de composants, Bibal est une application distribuée composée de plusieurs tiers:
+   - Une application web côté serveur,
+   - Une application web côté navigateur (faisant office d'IHM),
+   - Une base de données.
+
+   La base de données est une base relationnelle, aussi elle ne supporte pas
+   l’héritage. Livre et Magazine sont des spécialisations d’Œuvre Nous avons
+   donc construit un modèle physique des données pour modéliser les relations
+   entre Livre, Magazine et les entitées associées.
+
+   #+CAPTION: Modèle physique des données
+   #+NAME: fig:mpd
+   [[./res/img/mpd.png]]
+
+
+   Nous avons également ajouté une fonctionnalité d’authentification. La
+   bibliothécaire étant la seule personne utilisant l’application, il nous
+   paraissait important que personne d’autre ne puisse gérer les usagers, les
+   réservations, etc.
+
+
+   Notre implémentation a été réalisée avec :
+   - MariaDB pour la base de données,
+   - Hibernate pour gérer la persistance des données,
+   - Spring Boot pour la logique applicative,
+   - AngularJS pour l’interface homme-machine.
+
+
+
+   #+LaTeX: \clearpage
+
+** Captures d’écran de l’application
+
+   La page d’accueil de l’application permet plusieurs choses :
+   - enregistrer un utilisateur,
+   - se connecter à l’application,
+   - visualiser les livres et magazines présents dans la bibliothèque.
+
+
+
+   #+CAPTION: Page d'accueil
+   #+NAME: fig:screen-login
+   [[./res/img/screen-login.png]]
+
+   En tant que bibliothécaire connecté, d’autres fonctionnalités de gestion sont
+   débloquées pour les différents objets métiers. Les opérations CRUD sur tous
+   les objets sont possibles si l'on est identifié en tant que bibliothécaire.
+
+
+   #+CAPTION: Page d'accueil en étant authentifié
+   #+NAME: fig:screen-logged
+   [[./res/img/screen-logged.png]]
+
+
+   La vue des emprunts permet à la bibliothécaire, en plus des opérations CRUD,
+   de rendre l’exemplaire associé à cet emprunt.
+
+   #+CAPTION: Emprunts
+   #+NAME: fig:screen-emprunt
+   [[./res/img/screen-emprunt.png]]
+
+
+** Résumé
+
+   Toute la difficulté de cette réalisation réside dans la compréhension du
+   besoin et des contraintes, de leurs raisons d’être et de comment réaliser la
+   solution en en tenant compte. L’adoption d’une démarche scientifique est
+   essentielle pour éviter les écueils classiques en matière de communication,
+   d’analyse, d’implémentation, de gestion des ressources (humaine, temporelles,
+   financières, etc...). Nous avons décortiqué la problématique autant que
+   possible en étapes simples et tenté d’écarter au maximum toute ambiguïté. Le
+   résultat est simple mais répond au besoin : une application de gestion de
+   bibliothèque fournissant toutes les fonctionnalités demandées de façon
+   cohérente, simple d’accès, sécurisée, simple d’utilisation et facilement
+   évolutive.
+
+
+   #+LaTeX: \clearpage
+* Annexes
+** Diagrammes d’activité
+*** Créer un exemplaire
+
+   #+CAPTION:  Créer un exemplaire
+   #+NAME: fig:ajout-exemplaire
+   #+ATTR_LaTeX: :width 5cm :placement [!htpb]
+   [[./res/img/ajouter-un-exemplaire.png]]
+
+
+   #+LaTeX: \clearpage
+*** Ajouter un usager
+
+   #+CAPTION: Ajouter un usager
+   #+NAME: fig:ajout-usager
+   #+ATTR_LaTeX: :width 5cm :placement [!htpb]
+   [[./res/img/ajouter-usager.png]]
+
+   #+LaTeX: \clearpage
+*** Annuler une réservation
+
+   #+CAPTION: Annuler une réservation
+   #+NAME: fig:annuler-reservation
+   #+ATTR_LaTeX: :width 5cm :placement [!htpb]
+   [[./res/img/annuler-reservation.png]]
+
+
+   #+LaTeX: \clearpage
+*** Emprunter un exemplaire
+
+   #+CAPTION: Emprunter un exemplaire
+   #+NAME: fig:screen-emprunt
+   #+ATTR_LaTeX: :width 5cm :placement [!htpb]
+   [[./res/img/emprunter-exemplaire.png]]
+
+   #+LaTeX: \clearpage
+*** Modifier un exemplaire
+
+   #+CAPTION: Modifier un exemplaire
+   #+NAME: fig:modifier-exemplaire
+   #+ATTR_LaTeX: :width 5cm :placement [!htpb]
+   [[./res/img/modifier-exemplaire.png]]
+
+
+   #+LaTeX: \clearpage
+*** Supprimer un exemplaire
+
+   #+CAPTION: Supprimer un exemplaire
+   #+NAME: fig:supprimer-exemplaire
+   #+ATTR_LaTeX: :width 10cm :placement [!htpb]
+   [[./res/img/supprimer-exemplaire.png]]
+
+   #+LaTeX: \clearpage
+*** Vérifier l’état d’un exemplaire
+
+   #+CAPTION: Vérifier l’état d’un exemplaire
+   #+NAME: fig:verifier-etat-exemplaire
+   [[./res/img/verifier-etat-exemplaire.png]]
+
+   #+LaTeX: \clearpage
+*** Rendre un exemplaire
+
+   #+CAPTION: Rendre un exemplaire
+   #+NAME: fig:rendre-un-exemplaire
+   [[./res/img/rendre-un-exemplaire.png]]
