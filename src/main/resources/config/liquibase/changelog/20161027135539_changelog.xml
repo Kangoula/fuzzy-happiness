@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="geoffrey (generated)" id="1477576549316-1">
+        <createTable tableName="auteur">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="auteurPK"/>
+            </column>
+            <column name="nom" type="VARCHAR(255)"/>
+            <column name="prenom" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-2">
+        <createTable tableName="emprunt">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="empruntPK"/>
+            </column>
+            <column name="date_emprunt" type="date"/>
+            <column name="date_retour" type="date"/>
+            <column name="exemplaire_id" type="BIGINT"/>
+            <column name="usager_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-3">
+        <createTable tableName="exemplaire">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="exemplairePK"/>
+            </column>
+            <column name="edition" type="VARCHAR(255)"/>
+            <column name="etat" type="VARCHAR(255)"/>
+            <column name="livre_id" type="BIGINT"/>
+            <column name="magazine_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-5">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="datetime"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-6">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-7">
+        <createTable tableName="jhi_persistent_token">
+            <column name="series" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip_address" type="VARCHAR(39)"/>
+            <column name="token_date" type="date"/>
+            <column name="token_value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-8">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="lang_key" type="VARCHAR(5)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)"/>
+            <column name="reset_date" type="datetime"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-9">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-10">
+        <createTable tableName="livre">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="livrePK"/>
+            </column>
+            <column name="date_ajout" type="date"/>
+            <column name="date_edition" type="date"/>
+            <column name="nb_resa" type="INT"/>
+            <column name="resume" type="VARCHAR(255)"/>
+            <column name="titre" type="VARCHAR(255)"/>
+            <column name="auteur_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-11">
+        <createTable tableName="magazine">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="magazinePK"/>
+            </column>
+            <column name="date_ajout" type="date"/>
+            <column name="nb_resa" type="INT"/>
+            <column name="numero" type="INT"/>
+            <column name="titre" type="VARCHAR(255)"/>
+            <column name="auteur_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-12">
+        <createTable tableName="reservation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="reservationPK"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="date_expiration" type="date"/>
+            <column name="livre_reservation_id" type="BIGINT"/>
+            <column name="magazine_reservation_id" type="BIGINT"/>
+            <column name="usager_reservation_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-13">
+        <createTable tableName="usager">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="usagerPK"/>
+            </column>
+            <column name="adresse" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)"/>
+            <column name="prenom" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-14">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-15">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-16">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-17">
+        <addPrimaryKey columnNames="series" constraintName="jhi_persistent_tokenPK" tableName="jhi_persistent_token"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-18">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-19">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-20">
+        <addForeignKeyConstraint baseColumnNames="livre_id" baseTableName="exemplaire" constraintName="FK_3l0kowdroqmyy8yh4096fmbd8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="livre"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-21">
+        <addForeignKeyConstraint baseColumnNames="magazine_id" baseTableName="exemplaire" constraintName="FK_6vtywibgrl5js8c0vf1jfu9l3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="magazine"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-22">
+        <addForeignKeyConstraint baseColumnNames="magazine_reservation_id" baseTableName="reservation" constraintName="FK_82895rqgbankvca3t277l4xif" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="magazine"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-23">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_persistent_token" constraintName="FK_c2yetr6vr7nrqhjvi1rl24b3l" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-24">
+        <addForeignKeyConstraint baseColumnNames="livre_reservation_id" baseTableName="reservation" constraintName="FK_dypfjtvye95oyau8ga2d00dxy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="livre"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-25">
+        <addForeignKeyConstraint baseColumnNames="exemplaire_id" baseTableName="emprunt" constraintName="FK_e9xri592kkpb7klvo1fv553rw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exemplaire"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-26">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK_evb970jo5bi8aon8s65c0lyyn" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-27">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK_ik5r332jlvpolfr7e5n7oi42l" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-28">
+        <addForeignKeyConstraint baseColumnNames="usager_id" baseTableName="emprunt" constraintName="FK_ilaa74kqjxvo29s589af3efwc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="usager"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-29">
+        <addForeignKeyConstraint baseColumnNames="usager_reservation_id" baseTableName="reservation" constraintName="FK_lb406vtg9gfu9i5a4spd3m8gi" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="usager"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-30">
+        <addForeignKeyConstraint baseColumnNames="auteur_id" baseTableName="livre" constraintName="FK_nyiby0ki1sigd1a1u6q987as0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="auteur"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-31">
+        <addForeignKeyConstraint baseColumnNames="auteur_id" baseTableName="magazine" constraintName="FK_obll8ut0i7c11ft8435lr6bc5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="auteur"/>
+    </changeSet>
+    <changeSet author="geoffrey (generated)" id="1477576549316-32">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK_pg0oaw6mr9pt3ibeihdc1jwof" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

@@ -26,6 +26,39 @@
             resolve: {
             }
         })
+        .state('emprunt.return' , {
+            parent: 'emprunt',
+            url:'/{id}/return',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/emprunt/emprunt-return.html',
+                    controller: 'EmpruntReturnController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Emprunt', function(Emprunt) {
+                            return Emprunt.get({id : $stateParams.id}).$promise;
+                        }],
+                        previousState: ["$state", function ($state) {
+                            var currentStateData = {
+                                name: $state.current.name || 'emprunt',
+                                params: $state.params,
+                                url: $state.href($state.current.name, $state.params)
+                            };
+                            return currentStateData;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: 'emprunt' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('emprunt-detail', {
             parent: 'entity',
             url: '/emprunt/{id}',

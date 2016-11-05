@@ -5,15 +5,18 @@
         .module('bibalDenisApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Livre', 'Magazine'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, Livre, Magazine) {
         var vm = this;
 
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
+        vm.livres = Livre.query();
+        vm.magazines = Magazine.query();
+
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
