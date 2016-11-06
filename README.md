@@ -17,6 +17,10 @@ Prérequis :
 
 Pour utiliser l'application en tant que bibliothécaire, utiliser l'identifiant `admin` et le mot de passe `admin`.
 
+## Visual Paradigm
+
+Le projet Visual Paradigm se trouve dans le répertoire `model/`.
+
 [Node.js]: https://nodejs.org/
 [Bower]: http://bower.io/
 [Gulp]: http://gulpjs.com/
