@@ -1,4 +1,4 @@
-% Created 2016-11-05 Sat 23:44
+% Created 2016-11-06 Sun 16:47
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -81,7 +81,7 @@ Nous avons discerné trois cas d’usage :
 \begin{itemize}
 \item gérer les usagers, c'est-à-dire les personnes consultant la bibliothèque dans le but d’utiliser ses services,
 \item gérer les ouvrages et les exemplaires, c'est-à-dire toutes les ressources bibliographiques,
-\item gérer emprunt et réservation, qui concerne les services proposés par la bibliothèque aux usagers.
+\item gérer les emprunts et les réservations, qui concerne les services proposés par la bibliothèque aux usagers.
 \end{itemize}
 
 Une œuvre représente soit un livre soit un magazine et est immatérielle. Elle
@@ -137,18 +137,19 @@ On retrouve les trois pôles que qui ont été extraits suite à notre analyse d
 \item gérer les usagers,
 \item gérer les ouvrages et les exemplaires,
 \item gérer les emprunts et les réservations.
-\item Chaque pôle doit permettre d’effectuer les opérations basiques de lecture, création, modification et
-suppression (on utilisera le l'acronyme CRUD pour désigner ces opérations).
 \end{itemize}
+
+Chaque pôle doit permettre d’effectuer les opérations basiques de lecture, création, modification et
+suppression (on utilisera le l'acronyme CRUD pour désigner ces opérations).
 
 
 Dans le cas des emprunts et des réservations un cas d’usage s’ajoute à ces
 opérations basiques, rendre un exemplaire qui a été emprunté. Il est lui-même
 décliné en trois cas d’utilisation en fonction de différents paramètres :
 \begin{itemize}
-\item Rendu d’un exemplaire abîmé,
-\item Rendu d’un exemplaire après la date limite,
-\item Rendu d’un exemplaire réservé par un autre utilisateur.
+\item rendu d’un exemplaire abîmé,
+\item rendu d’un exemplaire après la date limite,
+\item rendu d’un exemplaire réservé par un autre utilisateur.
 \end{itemize}
 
 Lors de l’implémentation de l’application, ces cas d’utilisation devront tous être réalisables.
@@ -367,9 +368,9 @@ machine avec une JVM.
 
 Comme vu sur le diagramme de composants, Bibal est une application distribuée composée de plusieurs tiers:
 \begin{itemize}
-\item Une application web côté serveur,
-\item Une application web côté navigateur (faisant office d'IHM),
-\item Une base de données.
+\item une application web côté serveur,
+\item une application web côté navigateur (faisant office d'IHM),
+\item une base de données.
 \end{itemize}
 
 La base de données est une base relationnelle, aussi elle ne supporte pas
