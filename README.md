@@ -13,6 +13,9 @@ Prérequis :
 ### Docker
     ./setup.sh
 
+## Connexion
+
+Pour utiliser l'application en tant que bibliothécaire, utiliser l'identifiant `admin` et le mot de passe `admin`.
 
 [Node.js]: https://nodejs.org/
 [Bower]: http://bower.io/
