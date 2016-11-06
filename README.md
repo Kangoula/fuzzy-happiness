@@ -11,7 +11,7 @@ Prérequis :
 - [Bower][]
 
 ### Docker
-    `./setup.sh`
+    ./setup.sh
 
 
 [Node.js]: https://nodejs.org/
