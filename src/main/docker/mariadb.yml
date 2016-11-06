@@ -2,12 +2,11 @@ version: '2'
 services:
     bibaldenis-mariadb:
         container_name: bibaldenis-mariadb
-        image: mariadb:10.1.17
+        image: mariadb:latest
         # volumes:
         #     - ~/volumes/jhipster/BibalDenis/mysql/:/var/lib/mysql/
         environment:
-            - MYSQL_USER=root
-            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-            - MYSQL_DATABASE=bibaldenis
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=BibalDenis
         ports:
             - 3306:3306
