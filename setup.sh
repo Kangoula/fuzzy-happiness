@@ -2,6 +2,7 @@
 
 npm install
 gulp install
+bower update
 bower install
 
 ./mvnw clean package -Dmaven.test.skip=true
